@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "898422302240",
+    "project_id": "crypto-trader-e276d",
+    "storage_bucket": "crypto-trader-e276d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898422302240:android:f08033b7a597ceb898fe45",
+        "android_client_info": {
+          "package_name": "com.example.crypto_trader"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "898422302240-fmuqcgkl1ovng01amq1c69ssqs4r1vqa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB583j7MIAWBN4UKpkj0yZ6zOjz7rwiXYM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "898422302240-fmuqcgkl1ovng01amq1c69ssqs4r1vqa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
