@@ -4,8 +4,10 @@ import 'package:crypto_trader/domain/auth/auth_failure.dart';
 import 'package:crypto_trader/domain/auth/i_auth_facade.dart';
 import 'package:crypto_trader/domain/auth/user.dart' as app;
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:injectable/injectable.dart';
 import './firebase_user_mapper.dart';
 
+@LazySingleton(as: IAuthFacade)
 class FirebaseAuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
