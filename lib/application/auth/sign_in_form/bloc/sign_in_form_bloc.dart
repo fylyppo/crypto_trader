@@ -44,7 +44,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       }
     });
     on<SignInWithEmailAndPasswordPressed>((event, emit) async {
-      if (state.status.isValidated) {
+      if (state.status.isValid) {
         emit(state.copyWith(
             failure: null, status: FormzStatus.submissionInProgress));
         final failureOrSuccess = await _authFacade.signInWithEmailAndPassword(
@@ -54,11 +54,20 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
                 failure: failure, status: FormzStatus.submissionFailure),
             (success) =>
                 state.copyWith(status: FormzStatus.submissionSuccess)));
+      } 
+      else {
+        emit(state.copyWith(failure: null));
+        if (state.emailAddress.pure) {
+          emit(state.copyWith(emailAddress: const EmailAddress.dirty()));
+        }
+        if (state.password.pure) {
+          emit(state.copyWith(password: const Password.dirty()));
+        }
       }
     });
     on<SignInWithGooglePressed>((event, emit) async {
       emit(state.copyWith(
-            failure: null, status: FormzStatus.submissionInProgress));
+            failure: null));
         final failureOrSuccess = await _authFacade.signInWithGoogle();
         emit(failureOrSuccess.fold(
             (failure) => state.copyWith(
