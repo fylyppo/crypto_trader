@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:crypto_trader/presentation/routes/auth_guard.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 import 'firebase_options.dart';
 import 'injection.dart';
 import 'presentation/routes/app_router.gr.dart';
@@ -10,6 +12,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  getIt.registerSingleton<AppRouter>(AppRouter(authGuard: AuthGuard()));
+  configureInjection(Environment.prod);
   runApp(const MyApp());
 }
 

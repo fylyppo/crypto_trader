@@ -31,15 +31,19 @@ class AppRouter extends _i5.RootStackRouter {
   final Map<String, _i5.PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
       return _i5.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i1.SplashPage());
+          routeData: routeData,
+          child: _i5.WrappedRoute(child: const _i1.SplashPage()));
     },
     HomeRoute.name: (routeData) {
       return _i5.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i2.HomePage());
     },
     SignInRoute.name: (routeData) {
+      final args = routeData.argsAs<SignInRouteArgs>();
       return _i5.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i3.SignInPage());
+          routeData: routeData,
+          child: _i5.WrappedRoute(
+              child: _i3.SignInPage(key: args.key, onSuccess: args.onSuccess)));
     },
     SignUpRoute.name: (routeData) {
       return _i5.MaterialPageX<dynamic>(
@@ -75,10 +79,26 @@ class HomeRoute extends _i5.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.SignInPage]
-class SignInRoute extends _i5.PageRouteInfo<void> {
-  const SignInRoute() : super(SignInRoute.name, path: '/sign-in-page');
+class SignInRoute extends _i5.PageRouteInfo<SignInRouteArgs> {
+  SignInRoute({_i6.Key? key, required void Function() onSuccess})
+      : super(SignInRoute.name,
+            path: '/sign-in-page',
+            args: SignInRouteArgs(key: key, onSuccess: onSuccess));
 
   static const String name = 'SignInRoute';
+}
+
+class SignInRouteArgs {
+  const SignInRouteArgs({this.key, required this.onSuccess});
+
+  final _i6.Key? key;
+
+  final void Function() onSuccess;
+
+  @override
+  String toString() {
+    return 'SignInRouteArgs{key: $key, onSuccess: $onSuccess}';
+  }
 }
 
 /// generated route for
