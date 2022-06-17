@@ -1,47 +1,55 @@
 import 'package:bloc/bloc.dart';
-import 'package:crypto_trader/domain/auth/auth_failure.dart';
-import 'package:crypto_trader/domain/auth/email_address.dart';
-import 'package:crypto_trader/domain/auth/i_auth_facade.dart';
-import 'package:crypto_trader/domain/auth/password.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import '../../../../domain/auth/auth_failure.dart';
+import '../../../../domain/auth/confirm_password.dart';
+import '../../../../domain/auth/email_address.dart';
+import '../../../../domain/auth/i_auth_facade.dart';
+import '../../../../domain/auth/password.dart';
 
-part 'sign_in_form_event.dart';
-part 'sign_in_form_state.dart';
-part 'sign_in_form_bloc.freezed.dart';
+part 'sign_up_form_event.dart';
+part 'sign_up_form_state.dart';
+part 'sign_up_form_bloc.freezed.dart';
 
 @injectable
-class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
+class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
   final IAuthFacade _authFacade;
-
-  SignInFormBloc(this._authFacade) : super(SignInFormState.initial()) {
+  
+  SignUpFormBloc(this._authFacade) : super(SignUpFormState.initial()) {
     on<PasswordChanged>((event, emit) {
       final password = Password.dirty(event.password);
       emit(state.copyWith(
         password: password,
-        status: Formz.validate([password, state.emailAddress]),
+        status: Formz.validate([password, state.emailAddress, state.confirmPassword]),
+      ));
+    });
+    on<ConfirmPasswordChanged>((event, emit) {
+      final confirmPassword = ConfirmPassword.dirty(original: state.password, value: event.confirmPassword);
+      emit(state.copyWith(
+        confirmPassword: confirmPassword,
+        status: Formz.validate([state.password, state.emailAddress, confirmPassword]),
       ));
     });
     on<EmailChanged>((event, emit) {
       final email = EmailAddress.dirty(event.email);
       emit(state.copyWith(
         emailAddress: email,
-        status: Formz.validate([state.password, email]),
+        status: Formz.validate([state.password, email, state.confirmPassword]),
       ));
     });
-    on<SignInWithEmailAndPasswordPressed>((event, emit) async {
+    on<RegisterWithEmailAndPasswordPressed>((event, emit) async {
       if (state.status.isValid) {
         emit(state.copyWith(
             failure: null, status: FormzStatus.submissionInProgress));
-        final failureOrSuccess = await _authFacade.signInWithEmailAndPassword(
+        final failureOrSuccess = await _authFacade.registerWithEmailAndPassword(
             email: state.emailAddress.value, password: state.password.value);
         emit(failureOrSuccess.fold(
             (failure) => state.copyWith(
                 failure: failure, status: FormzStatus.submissionFailure),
             (success) =>
                 state.copyWith(status: FormzStatus.submissionSuccess)));
-      } 
+      }
       else {
         emit(state.copyWith(failure: null));
         if (state.emailAddress.pure) {
@@ -50,17 +58,10 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         if (state.password.pure) {
           emit(state.copyWith(password: const Password.dirty()));
         }
+        if (state.confirmPassword.pure) {
+          emit(state.copyWith(confirmPassword: const ConfirmPassword.dirty(original: Password.dirty())));
+        }
       }
-    });
-    on<SignInWithGooglePressed>((event, emit) async {
-      emit(state.copyWith(
-            failure: null));
-        final failureOrSuccess = await _authFacade.signInWithGoogle();
-        emit(failureOrSuccess.fold(
-            (failure) => state.copyWith(
-                failure: failure, status: FormzStatus.submissionFailure),
-            (success) =>
-                state.copyWith(status: FormzStatus.submissionSuccess)));
     });
   }
 }

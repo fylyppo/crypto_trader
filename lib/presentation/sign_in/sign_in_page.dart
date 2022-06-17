@@ -5,7 +5,7 @@ import 'package:crypto_trader/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-
+import '../routes/app_router.gr.dart';
 import 'widgets/sign_in_form.dart';
 
 class SignInPage extends StatelessWidget implements AutoRouteWrapper {
@@ -34,7 +34,22 @@ class SignInPage extends StatelessWidget implements AutoRouteWrapper {
             ).show(context);
           }
         },
-        child: const SignInForm(),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              const SignInForm(),
+              Row(
+                children: [
+                  const Text("Don't have an account?"),
+                  TextButton(onPressed: () {
+                    getIt<AppRouter>().pushNamed('/sign-up-page');
+                  }, child: const Text('Sign Up'))
+                ],
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
