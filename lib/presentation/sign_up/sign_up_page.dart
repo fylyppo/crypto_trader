@@ -10,10 +10,8 @@ import '../routes/app_router.gr.dart';
 import 'widgets/sign_up_form.dart';
 
 class SignUpPage extends StatelessWidget implements AutoRouteWrapper {
-  //final void Function() onSuccess;
   const SignUpPage({
     Key? key,
-    //required this.onSuccess,
   }) : super(key: key);
 
   @override

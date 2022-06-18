@@ -641,6 +641,7 @@ abstract class SignInWithGooglePressed implements SignInFormEvent {
 
 /// @nodoc
 mixin _$SignInFormState {
+  bool get validate => throw _privateConstructorUsedError;
   FormzStatus get status => throw _privateConstructorUsedError;
   Password get password => throw _privateConstructorUsedError;
   EmailAddress get emailAddress => throw _privateConstructorUsedError;
@@ -657,7 +658,8 @@ abstract class $SignInFormStateCopyWith<$Res> {
           SignInFormState value, $Res Function(SignInFormState) then) =
       _$SignInFormStateCopyWithImpl<$Res>;
   $Res call(
-      {FormzStatus status,
+      {bool validate,
+      FormzStatus status,
       Password password,
       EmailAddress emailAddress,
       AuthFailure? failure});
@@ -676,12 +678,17 @@ class _$SignInFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? validate = freezed,
     Object? status = freezed,
     Object? password = freezed,
     Object? emailAddress = freezed,
     Object? failure = freezed,
   }) {
     return _then(_value.copyWith(
+      validate: validate == freezed
+          ? _value.validate
+          : validate // ignore: cast_nullable_to_non_nullable
+              as bool,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -721,7 +728,8 @@ abstract class _$$_SignInFormStateCopyWith<$Res>
       __$$_SignInFormStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {FormzStatus status,
+      {bool validate,
+      FormzStatus status,
       Password password,
       EmailAddress emailAddress,
       AuthFailure? failure});
@@ -743,12 +751,17 @@ class __$$_SignInFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? validate = freezed,
     Object? status = freezed,
     Object? password = freezed,
     Object? emailAddress = freezed,
     Object? failure = freezed,
   }) {
     return _then(_$_SignInFormState(
+      validate: validate == freezed
+          ? _value.validate
+          : validate // ignore: cast_nullable_to_non_nullable
+              as bool,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -773,11 +786,14 @@ class __$$_SignInFormStateCopyWithImpl<$Res>
 
 class _$_SignInFormState implements _SignInFormState {
   const _$_SignInFormState(
-      {required this.status,
+      {required this.validate,
+      required this.status,
       required this.password,
       required this.emailAddress,
       this.failure});
 
+  @override
+  final bool validate;
   @override
   final FormzStatus status;
   @override
@@ -789,7 +805,7 @@ class _$_SignInFormState implements _SignInFormState {
 
   @override
   String toString() {
-    return 'SignInFormState(status: $status, password: $password, emailAddress: $emailAddress, failure: $failure)';
+    return 'SignInFormState(validate: $validate, status: $status, password: $password, emailAddress: $emailAddress, failure: $failure)';
   }
 
   @override
@@ -797,6 +813,7 @@ class _$_SignInFormState implements _SignInFormState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SignInFormState &&
+            const DeepCollectionEquality().equals(other.validate, validate) &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.password, password) &&
             const DeepCollectionEquality()
@@ -807,6 +824,7 @@ class _$_SignInFormState implements _SignInFormState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(validate),
       const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(password),
       const DeepCollectionEquality().hash(emailAddress),
@@ -820,11 +838,14 @@ class _$_SignInFormState implements _SignInFormState {
 
 abstract class _SignInFormState implements SignInFormState {
   const factory _SignInFormState(
-      {required final FormzStatus status,
+      {required final bool validate,
+      required final FormzStatus status,
       required final Password password,
       required final EmailAddress emailAddress,
       final AuthFailure? failure}) = _$_SignInFormState;
 
+  @override
+  bool get validate => throw _privateConstructorUsedError;
   @override
   FormzStatus get status => throw _privateConstructorUsedError;
   @override

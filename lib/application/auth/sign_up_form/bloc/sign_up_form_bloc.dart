@@ -21,6 +21,7 @@ class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
       final password = Password.dirty(event.password);
       emit(state.copyWith(
         password: password,
+        failure: null,
         status: Formz.validate([password, state.emailAddress, state.confirmPassword]),
       ));
     });
@@ -28,6 +29,7 @@ class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
       final confirmPassword = ConfirmPassword.dirty(original: state.password, value: event.confirmPassword);
       emit(state.copyWith(
         confirmPassword: confirmPassword,
+        failure: null,
         status: Formz.validate([state.password, state.emailAddress, confirmPassword]),
       ));
     });
@@ -35,10 +37,12 @@ class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
       final email = EmailAddress.dirty(event.email);
       emit(state.copyWith(
         emailAddress: email,
+        failure: null,
         status: Formz.validate([state.password, email, state.confirmPassword]),
       ));
     });
     on<RegisterWithEmailAndPasswordPressed>((event, emit) async {
+      emit(state.copyWith(validate: true));
       if (state.status.isValid) {
         emit(state.copyWith(
             failure: null, status: FormzStatus.submissionInProgress));

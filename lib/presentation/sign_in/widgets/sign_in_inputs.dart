@@ -8,8 +8,6 @@ class EmailAddressInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SignInFormBloc, SignInFormState>(
-      buildWhen: (previous, current) =>
-          previous.emailAddress != current.emailAddress,
       builder: (context, state) {
         return TextField(
           key: const Key('SignInFormForm_emailAddressInput_textField'),
@@ -18,7 +16,7 @@ class EmailAddressInput extends StatelessWidget {
           decoration: InputDecoration(
             labelText: 'Email Address',
             errorText:
-                state.emailAddress.invalid ? 'Invalid Email Address' : null,
+                state.validate && state.emailAddress.invalid ? 'Invalid Email Address' : null,
           ),
         );
       },
@@ -32,7 +30,6 @@ class PasswordInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SignInFormBloc, SignInFormState>(
-      buildWhen: (previous, current) => previous.password != current.password,
       builder: (context, state) {
         return TextField(
           key: const Key('SignInFormForm_passwordInput_textField'),
@@ -41,7 +38,7 @@ class PasswordInput extends StatelessWidget {
           obscureText: true,
           decoration: InputDecoration(
             labelText: 'Password',
-            errorText: state.password.invalid ? 'Invalid Password' : null,
+            errorText: state.validate && state.password.invalid ? 'Invalid Password' : null,
           ),
         );
       },

@@ -672,6 +672,7 @@ abstract class RegisterWithEmailAndPasswordPressed implements SignUpFormEvent {
 
 /// @nodoc
 mixin _$SignUpFormState {
+  bool get validate => throw _privateConstructorUsedError;
   FormzStatus get status => throw _privateConstructorUsedError;
   Password get password => throw _privateConstructorUsedError;
   ConfirmPassword get confirmPassword => throw _privateConstructorUsedError;
@@ -689,7 +690,8 @@ abstract class $SignUpFormStateCopyWith<$Res> {
           SignUpFormState value, $Res Function(SignUpFormState) then) =
       _$SignUpFormStateCopyWithImpl<$Res>;
   $Res call(
-      {FormzStatus status,
+      {bool validate,
+      FormzStatus status,
       Password password,
       ConfirmPassword confirmPassword,
       EmailAddress emailAddress,
@@ -709,6 +711,7 @@ class _$SignUpFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? validate = freezed,
     Object? status = freezed,
     Object? password = freezed,
     Object? confirmPassword = freezed,
@@ -716,6 +719,10 @@ class _$SignUpFormStateCopyWithImpl<$Res>
     Object? failure = freezed,
   }) {
     return _then(_value.copyWith(
+      validate: validate == freezed
+          ? _value.validate
+          : validate // ignore: cast_nullable_to_non_nullable
+              as bool,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -759,7 +766,8 @@ abstract class _$$_SignUpFormStateCopyWith<$Res>
       __$$_SignUpFormStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {FormzStatus status,
+      {bool validate,
+      FormzStatus status,
       Password password,
       ConfirmPassword confirmPassword,
       EmailAddress emailAddress,
@@ -782,6 +790,7 @@ class __$$_SignUpFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? validate = freezed,
     Object? status = freezed,
     Object? password = freezed,
     Object? confirmPassword = freezed,
@@ -789,6 +798,10 @@ class __$$_SignUpFormStateCopyWithImpl<$Res>
     Object? failure = freezed,
   }) {
     return _then(_$_SignUpFormState(
+      validate: validate == freezed
+          ? _value.validate
+          : validate // ignore: cast_nullable_to_non_nullable
+              as bool,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -817,12 +830,15 @@ class __$$_SignUpFormStateCopyWithImpl<$Res>
 
 class _$_SignUpFormState implements _SignUpFormState {
   const _$_SignUpFormState(
-      {required this.status,
+      {required this.validate,
+      required this.status,
       required this.password,
       required this.confirmPassword,
       required this.emailAddress,
       this.failure});
 
+  @override
+  final bool validate;
   @override
   final FormzStatus status;
   @override
@@ -836,7 +852,7 @@ class _$_SignUpFormState implements _SignUpFormState {
 
   @override
   String toString() {
-    return 'SignUpFormState(status: $status, password: $password, confirmPassword: $confirmPassword, emailAddress: $emailAddress, failure: $failure)';
+    return 'SignUpFormState(validate: $validate, status: $status, password: $password, confirmPassword: $confirmPassword, emailAddress: $emailAddress, failure: $failure)';
   }
 
   @override
@@ -844,6 +860,7 @@ class _$_SignUpFormState implements _SignUpFormState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SignUpFormState &&
+            const DeepCollectionEquality().equals(other.validate, validate) &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.password, password) &&
             const DeepCollectionEquality()
@@ -856,6 +873,7 @@ class _$_SignUpFormState implements _SignUpFormState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(validate),
       const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(password),
       const DeepCollectionEquality().hash(confirmPassword),
@@ -870,12 +888,15 @@ class _$_SignUpFormState implements _SignUpFormState {
 
 abstract class _SignUpFormState implements SignUpFormState {
   const factory _SignUpFormState(
-      {required final FormzStatus status,
+      {required final bool validate,
+      required final FormzStatus status,
       required final Password password,
       required final ConfirmPassword confirmPassword,
       required final EmailAddress emailAddress,
       final AuthFailure? failure}) = _$_SignUpFormState;
 
+  @override
+  bool get validate => throw _privateConstructorUsedError;
   @override
   FormzStatus get status => throw _privateConstructorUsedError;
   @override

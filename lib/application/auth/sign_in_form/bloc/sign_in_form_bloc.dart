@@ -20,6 +20,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       final password = Password.dirty(event.password);
       emit(state.copyWith(
         password: password,
+        failure: null,
         status: Formz.validate([password, state.emailAddress]),
       ));
     });
@@ -27,10 +28,12 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       final email = EmailAddress.dirty(event.email);
       emit(state.copyWith(
         emailAddress: email,
+        failure: null,
         status: Formz.validate([state.password, email]),
       ));
     });
     on<SignInWithEmailAndPasswordPressed>((event, emit) async {
+      emit(state.copyWith(validate: true));
       if (state.status.isValid) {
         emit(state.copyWith(
             failure: null, status: FormzStatus.submissionInProgress));

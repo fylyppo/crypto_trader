@@ -9,9 +9,8 @@ class EmailAddressInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SignUpFormBloc, SignUpFormState>(
-      buildWhen: (previous, current) =>
-          previous.emailAddress != current.emailAddress,
       builder: (context, state) {
+        print(state.validate && state.emailAddress.invalid);
         return TextField(
           key: const Key('SignUpFormForm_emailAddressInput_textField'),
           onChanged: (emailAddress) =>
@@ -19,7 +18,7 @@ class EmailAddressInput extends StatelessWidget {
           decoration: InputDecoration(
             labelText: 'Email Address',
             errorText:
-                state.emailAddress.invalid ? 'Invalid Email Address' : null,
+                state.validate && state.emailAddress.invalid ? 'Invalid Email Address' : null,
           ),
         );
       },
@@ -33,7 +32,6 @@ class PasswordInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SignUpFormBloc, SignUpFormState>(
-      buildWhen: (previous, current) => previous.password != current.password,
       builder: (context, state) {
         return TextField(
           key: const Key('SignUpFormForm_passwordInput_textField'),
@@ -42,7 +40,7 @@ class PasswordInput extends StatelessWidget {
           obscureText: true,
           decoration: InputDecoration(
             labelText: 'Password',
-            errorText: state.password.invalid ? 'Invalid Password' : null,
+            errorText: state.validate && state.password.invalid ? 'Invalid Password' : null,
           ),
         );
       },
@@ -68,7 +66,6 @@ class ConfrimPasswordInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SignUpFormBloc, SignUpFormState>(
-      buildWhen: (previous, current) => previous.confirmPassword != current.confirmPassword,
       builder: (context, state) {
         return TextField(
           key: const Key('SignUpFormForm_confirmPasswordInput_textField'),
@@ -77,7 +74,7 @@ class ConfrimPasswordInput extends StatelessWidget {
           obscureText: true,
           decoration: InputDecoration(
             labelText: 'Confirm Password',
-            errorText: state.confirmPassword.invalid ? error(state.confirmPassword.error) : null
+            errorText: state.validate && state.confirmPassword.invalid ? error(state.confirmPassword.error) : null
           ),
         );
       },
