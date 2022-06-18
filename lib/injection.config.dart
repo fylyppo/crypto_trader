@@ -36,7 +36,7 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i8.SignInFormBloc(get<_i6.IAuthFacade>()));
   gh.factory<_i9.SignUpFormBloc>(
       () => _i9.SignUpFormBloc(get<_i6.IAuthFacade>()));
-  gh.factory<_i10.AuthBloc>(() => _i10.AuthBloc(get<_i6.IAuthFacade>()));
+  gh.singleton<_i10.AuthBloc>(_i10.AuthBloc(get<_i6.IAuthFacade>()));
   return get;
 }
 

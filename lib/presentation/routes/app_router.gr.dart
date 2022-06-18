@@ -31,8 +31,7 @@ class AppRouter extends _i5.RootStackRouter {
   final Map<String, _i5.PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
       return _i5.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i5.WrappedRoute(child: const _i1.SplashPage()));
+          routeData: routeData, child: const _i1.SplashPage());
     },
     HomeRoute.name: (routeData) {
       return _i5.MaterialPageX<dynamic>(

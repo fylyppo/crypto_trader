@@ -6,8 +6,7 @@ import '../../injection.dart';
 class AuthGuard extends AutoRouteGuard {
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
-    final isAuthenticated = getIt<AuthBloc>()
-        .state
+    final isAuthenticated = getIt<AuthBloc>().state
         .maybeMap(authenticated: (_) => true, orElse: () => false);
     if (isAuthenticated) {
       resolver.next(true);
