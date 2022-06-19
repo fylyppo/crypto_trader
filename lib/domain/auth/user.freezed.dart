@@ -51,27 +51,27 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_PersonCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$$_PersonCopyWith(_$_Person value, $Res Function(_$_Person) then) =
-      __$$_PersonCopyWithImpl<$Res>;
+abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
+  factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
+      __$$_UserCopyWithImpl<$Res>;
   @override
   $Res call({String id});
 }
 
 /// @nodoc
-class __$$_PersonCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
-    implements _$$_PersonCopyWith<$Res> {
-  __$$_PersonCopyWithImpl(_$_Person _value, $Res Function(_$_Person) _then)
-      : super(_value, (v) => _then(v as _$_Person));
+class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
+    implements _$$_UserCopyWith<$Res> {
+  __$$_UserCopyWithImpl(_$_User _value, $Res Function(_$_User) _then)
+      : super(_value, (v) => _then(v as _$_User));
 
   @override
-  _$_Person get _value => super._value as _$_Person;
+  _$_User get _value => super._value as _$_User;
 
   @override
   $Res call({
     Object? id = freezed,
   }) {
-    return _then(_$_Person(
+    return _then(_$_User(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -82,8 +82,8 @@ class __$$_PersonCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Person implements _Person {
-  const _$_Person({required this.id});
+class _$_User implements _User {
+  const _$_User({required this.id});
 
   @override
   final String id;
@@ -97,7 +97,7 @@ class _$_Person implements _Person {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Person &&
+            other is _$_User &&
             const DeepCollectionEquality().equals(other.id, id));
   }
 
@@ -107,17 +107,16 @@ class _$_Person implements _Person {
 
   @JsonKey(ignore: true)
   @override
-  _$$_PersonCopyWith<_$_Person> get copyWith =>
-      __$$_PersonCopyWithImpl<_$_Person>(this, _$identity);
+  _$$_UserCopyWith<_$_User> get copyWith =>
+      __$$_UserCopyWithImpl<_$_User>(this, _$identity);
 }
 
-abstract class _Person implements User {
-  const factory _Person({required final String id}) = _$_Person;
+abstract class _User implements User {
+  const factory _User({required final String id}) = _$_User;
 
   @override
   String get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$$_PersonCopyWith<_$_Person> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;
 }
