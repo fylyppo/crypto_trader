@@ -14,15 +14,26 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+BookTickerPayload _$BookTickerPayloadFromJson(Map<String, dynamic> json) {
+  return _BookTickerPayload.fromJson(json);
+}
+
 /// @nodoc
 mixin _$BookTickerPayload {
+  @JsonKey(name: 's')
   String get symbol => throw _privateConstructorUsedError;
+  @JsonKey(name: 'b')
   String get bestBidPrice => throw _privateConstructorUsedError;
+  @JsonKey(name: 'B')
   String get bestBidQty => throw _privateConstructorUsedError;
+  @JsonKey(name: 'a')
   String get bestAskPrice => throw _privateConstructorUsedError;
+  @JsonKey(name: 'A')
   String get bestAskQty => throw _privateConstructorUsedError;
+  @JsonKey(name: 'u')
   int get orderBookUpdateID => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $BookTickerPayloadCopyWith<BookTickerPayload> get copyWith =>
       throw _privateConstructorUsedError;
@@ -34,12 +45,12 @@ abstract class $BookTickerPayloadCopyWith<$Res> {
           BookTickerPayload value, $Res Function(BookTickerPayload) then) =
       _$BookTickerPayloadCopyWithImpl<$Res>;
   $Res call(
-      {String symbol,
-      String bestBidPrice,
-      String bestBidQty,
-      String bestAskPrice,
-      String bestAskQty,
-      int orderBookUpdateID});
+      {@JsonKey(name: 's') String symbol,
+      @JsonKey(name: 'b') String bestBidPrice,
+      @JsonKey(name: 'B') String bestBidQty,
+      @JsonKey(name: 'a') String bestAskPrice,
+      @JsonKey(name: 'A') String bestAskQty,
+      @JsonKey(name: 'u') int orderBookUpdateID});
 }
 
 /// @nodoc
@@ -97,12 +108,12 @@ abstract class _$$_BookTickerPayloadCopyWith<$Res>
       __$$_BookTickerPayloadCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String symbol,
-      String bestBidPrice,
-      String bestBidQty,
-      String bestAskPrice,
-      String bestAskQty,
-      int orderBookUpdateID});
+      {@JsonKey(name: 's') String symbol,
+      @JsonKey(name: 'b') String bestBidPrice,
+      @JsonKey(name: 'B') String bestBidQty,
+      @JsonKey(name: 'a') String bestAskPrice,
+      @JsonKey(name: 'A') String bestAskQty,
+      @JsonKey(name: 'u') int orderBookUpdateID});
 }
 
 /// @nodoc
@@ -155,27 +166,36 @@ class __$$_BookTickerPayloadCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_BookTickerPayload implements _BookTickerPayload {
   const _$_BookTickerPayload(
-      {required this.symbol,
-      required this.bestBidPrice,
-      required this.bestBidQty,
-      required this.bestAskPrice,
-      required this.bestAskQty,
-      required this.orderBookUpdateID});
+      {@JsonKey(name: 's') required this.symbol,
+      @JsonKey(name: 'b') required this.bestBidPrice,
+      @JsonKey(name: 'B') required this.bestBidQty,
+      @JsonKey(name: 'a') required this.bestAskPrice,
+      @JsonKey(name: 'A') required this.bestAskQty,
+      @JsonKey(name: 'u') required this.orderBookUpdateID});
+
+  factory _$_BookTickerPayload.fromJson(Map<String, dynamic> json) =>
+      _$$_BookTickerPayloadFromJson(json);
 
   @override
+  @JsonKey(name: 's')
   final String symbol;
   @override
+  @JsonKey(name: 'b')
   final String bestBidPrice;
   @override
+  @JsonKey(name: 'B')
   final String bestBidQty;
   @override
+  @JsonKey(name: 'a')
   final String bestAskPrice;
   @override
+  @JsonKey(name: 'A')
   final String bestAskQty;
   @override
+  @JsonKey(name: 'u')
   final int orderBookUpdateID;
 
   @override
@@ -201,6 +221,7 @@ class _$_BookTickerPayload implements _BookTickerPayload {
                 .equals(other.orderBookUpdateID, orderBookUpdateID));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -216,28 +237,43 @@ class _$_BookTickerPayload implements _BookTickerPayload {
   _$$_BookTickerPayloadCopyWith<_$_BookTickerPayload> get copyWith =>
       __$$_BookTickerPayloadCopyWithImpl<_$_BookTickerPayload>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_BookTickerPayloadToJson(this);
+  }
 }
 
 abstract class _BookTickerPayload implements BookTickerPayload {
   const factory _BookTickerPayload(
-      {required final String symbol,
-      required final String bestBidPrice,
-      required final String bestBidQty,
-      required final String bestAskPrice,
-      required final String bestAskQty,
-      required final int orderBookUpdateID}) = _$_BookTickerPayload;
+          {@JsonKey(name: 's') required final String symbol,
+          @JsonKey(name: 'b') required final String bestBidPrice,
+          @JsonKey(name: 'B') required final String bestBidQty,
+          @JsonKey(name: 'a') required final String bestAskPrice,
+          @JsonKey(name: 'A') required final String bestAskQty,
+          @JsonKey(name: 'u') required final int orderBookUpdateID}) =
+      _$_BookTickerPayload;
+
+  factory _BookTickerPayload.fromJson(Map<String, dynamic> json) =
+      _$_BookTickerPayload.fromJson;
 
   @override
+  @JsonKey(name: 's')
   String get symbol => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'b')
   String get bestBidPrice => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'B')
   String get bestBidQty => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'a')
   String get bestAskPrice => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'A')
   String get bestAskQty => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'u')
   int get orderBookUpdateID => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

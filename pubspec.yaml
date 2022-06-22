@@ -28,6 +28,8 @@ dependencies:
   another_flushbar: ^1.10.29
   web_socket_channel: ^2.2.0
   async: ^2.8.2
+  json_serializable: ^6.2.0
+  json_annotation: ^4.5.0
   
 
 dev_dependencies:
