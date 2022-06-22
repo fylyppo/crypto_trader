@@ -14,20 +14,36 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+TradePayload _$TradePayloadFromJson(Map<String, dynamic> json) {
+  return _TradePayload.fromJson(json);
+}
+
 /// @nodoc
 mixin _$TradePayload {
+  @JsonKey(name: 'e')
   String get eventType => throw _privateConstructorUsedError;
+  @JsonKey(name: 's')
   String get symbol => throw _privateConstructorUsedError;
+  @JsonKey(name: 'p')
   String get price => throw _privateConstructorUsedError;
+  @JsonKey(name: 'q')
   String get quantity => throw _privateConstructorUsedError;
+  @JsonKey(name: 'E')
   int get eventTime => throw _privateConstructorUsedError;
+  @JsonKey(name: 't')
   int get tradeID => throw _privateConstructorUsedError;
+  @JsonKey(name: 'b')
   int get buyerOrderID => throw _privateConstructorUsedError;
+  @JsonKey(name: 'a')
   int get sellerOrderID => throw _privateConstructorUsedError;
+  @JsonKey(name: 'T')
   int get tradeTime => throw _privateConstructorUsedError;
+  @JsonKey(name: 'm')
   bool get marketMaker => throw _privateConstructorUsedError;
+  @JsonKey(name: 'M')
   bool get ignore => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $TradePayloadCopyWith<TradePayload> get copyWith =>
       throw _privateConstructorUsedError;
@@ -39,17 +55,17 @@ abstract class $TradePayloadCopyWith<$Res> {
           TradePayload value, $Res Function(TradePayload) then) =
       _$TradePayloadCopyWithImpl<$Res>;
   $Res call(
-      {String eventType,
-      String symbol,
-      String price,
-      String quantity,
-      int eventTime,
-      int tradeID,
-      int buyerOrderID,
-      int sellerOrderID,
-      int tradeTime,
-      bool marketMaker,
-      bool ignore});
+      {@JsonKey(name: 'e') String eventType,
+      @JsonKey(name: 's') String symbol,
+      @JsonKey(name: 'p') String price,
+      @JsonKey(name: 'q') String quantity,
+      @JsonKey(name: 'E') int eventTime,
+      @JsonKey(name: 't') int tradeID,
+      @JsonKey(name: 'b') int buyerOrderID,
+      @JsonKey(name: 'a') int sellerOrderID,
+      @JsonKey(name: 'T') int tradeTime,
+      @JsonKey(name: 'm') bool marketMaker,
+      @JsonKey(name: 'M') bool ignore});
 }
 
 /// @nodoc
@@ -131,17 +147,17 @@ abstract class _$$_TradePayloadCopyWith<$Res>
       __$$_TradePayloadCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String eventType,
-      String symbol,
-      String price,
-      String quantity,
-      int eventTime,
-      int tradeID,
-      int buyerOrderID,
-      int sellerOrderID,
-      int tradeTime,
-      bool marketMaker,
-      bool ignore});
+      {@JsonKey(name: 'e') String eventType,
+      @JsonKey(name: 's') String symbol,
+      @JsonKey(name: 'p') String price,
+      @JsonKey(name: 'q') String quantity,
+      @JsonKey(name: 'E') int eventTime,
+      @JsonKey(name: 't') int tradeID,
+      @JsonKey(name: 'b') int buyerOrderID,
+      @JsonKey(name: 'a') int sellerOrderID,
+      @JsonKey(name: 'T') int tradeTime,
+      @JsonKey(name: 'm') bool marketMaker,
+      @JsonKey(name: 'M') bool ignore});
 }
 
 /// @nodoc
@@ -219,42 +235,56 @@ class __$$_TradePayloadCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_TradePayload implements _TradePayload {
   const _$_TradePayload(
-      {required this.eventType,
-      required this.symbol,
-      required this.price,
-      required this.quantity,
-      required this.eventTime,
-      required this.tradeID,
-      required this.buyerOrderID,
-      required this.sellerOrderID,
-      required this.tradeTime,
-      required this.marketMaker,
-      required this.ignore});
+      {@JsonKey(name: 'e') required this.eventType,
+      @JsonKey(name: 's') required this.symbol,
+      @JsonKey(name: 'p') required this.price,
+      @JsonKey(name: 'q') required this.quantity,
+      @JsonKey(name: 'E') required this.eventTime,
+      @JsonKey(name: 't') required this.tradeID,
+      @JsonKey(name: 'b') required this.buyerOrderID,
+      @JsonKey(name: 'a') required this.sellerOrderID,
+      @JsonKey(name: 'T') required this.tradeTime,
+      @JsonKey(name: 'm') required this.marketMaker,
+      @JsonKey(name: 'M') required this.ignore});
+
+  factory _$_TradePayload.fromJson(Map<String, dynamic> json) =>
+      _$$_TradePayloadFromJson(json);
 
   @override
+  @JsonKey(name: 'e')
   final String eventType;
   @override
+  @JsonKey(name: 's')
   final String symbol;
   @override
+  @JsonKey(name: 'p')
   final String price;
   @override
+  @JsonKey(name: 'q')
   final String quantity;
   @override
+  @JsonKey(name: 'E')
   final int eventTime;
   @override
+  @JsonKey(name: 't')
   final int tradeID;
   @override
+  @JsonKey(name: 'b')
   final int buyerOrderID;
   @override
+  @JsonKey(name: 'a')
   final int sellerOrderID;
   @override
+  @JsonKey(name: 'T')
   final int tradeTime;
   @override
+  @JsonKey(name: 'm')
   final bool marketMaker;
   @override
+  @JsonKey(name: 'M')
   final bool ignore;
 
   @override
@@ -283,6 +313,7 @@ class _$_TradePayload implements _TradePayload {
             const DeepCollectionEquality().equals(other.ignore, ignore));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -302,43 +333,62 @@ class _$_TradePayload implements _TradePayload {
   @override
   _$$_TradePayloadCopyWith<_$_TradePayload> get copyWith =>
       __$$_TradePayloadCopyWithImpl<_$_TradePayload>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TradePayloadToJson(this);
+  }
 }
 
 abstract class _TradePayload implements TradePayload {
   const factory _TradePayload(
-      {required final String eventType,
-      required final String symbol,
-      required final String price,
-      required final String quantity,
-      required final int eventTime,
-      required final int tradeID,
-      required final int buyerOrderID,
-      required final int sellerOrderID,
-      required final int tradeTime,
-      required final bool marketMaker,
-      required final bool ignore}) = _$_TradePayload;
+      {@JsonKey(name: 'e') required final String eventType,
+      @JsonKey(name: 's') required final String symbol,
+      @JsonKey(name: 'p') required final String price,
+      @JsonKey(name: 'q') required final String quantity,
+      @JsonKey(name: 'E') required final int eventTime,
+      @JsonKey(name: 't') required final int tradeID,
+      @JsonKey(name: 'b') required final int buyerOrderID,
+      @JsonKey(name: 'a') required final int sellerOrderID,
+      @JsonKey(name: 'T') required final int tradeTime,
+      @JsonKey(name: 'm') required final bool marketMaker,
+      @JsonKey(name: 'M') required final bool ignore}) = _$_TradePayload;
+
+  factory _TradePayload.fromJson(Map<String, dynamic> json) =
+      _$_TradePayload.fromJson;
 
   @override
+  @JsonKey(name: 'e')
   String get eventType => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 's')
   String get symbol => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'p')
   String get price => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'q')
   String get quantity => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'E')
   int get eventTime => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 't')
   int get tradeID => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'b')
   int get buyerOrderID => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'a')
   int get sellerOrderID => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'T')
   int get tradeTime => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'm')
   bool get marketMaker => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'M')
   bool get ignore => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
