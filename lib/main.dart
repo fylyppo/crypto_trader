@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
       child: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
-          state.mapOrNull(unauthenticated: (value) => getIt<AppRouter>().replaceNamed('/home-page'));
+          state.maybeMap(initial: null, orElse: () => getIt<AppRouter>().replaceNamed('/home-page'));
         },
         child: MaterialApp.router(
           title: 'Crypto Trader',
