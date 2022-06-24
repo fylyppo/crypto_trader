@@ -6,12 +6,14 @@ import 'package:crypto_trader/domain/websocket_market_streams/i_wms_repository.d
 import 'package:dartz/dartz.dart';
 import 'package:crypto_trader/domain/websocket_market_streams/wms_failure.dart';
 import 'package:crypto_trader/domain/websocket_market_streams/trade_payload.dart';
+import 'package:flutter/foundation.dart';
 import 'package:web_socket_channel/io.dart';
 
 import 'subscribe_result.dart';
 
 class WMSRepository implements IWMSRepository {
   IOWebSocketChannel? channel;
+  late Stream wmsStream = channel!.stream.asBroadcastStream();
 
   @override
   Either<WMSFailure, Unit> connectWebsocket() {
@@ -29,16 +31,16 @@ class WMSRepository implements IWMSRepository {
   Future<Either<WMSFailure, Stream<BookTickerPayload>>> getBookTickerStream(
       String symbol) async {
     const tradeStreamId = 1;
-    channel!.sink.add({
+    channel!.sink.add(jsonEncode({
       "method": "SUBSCRIBE",
       "params": ["$symbol@bookTicker"],
       "id": tradeStreamId
-    });
-    if (jsonDecode(await channel!.stream.last) ==
-        returnSubscribeResult(tradeStreamId)) {
-      final _multiStream =
-          StreamSplitter(channel!.stream.map((event) => jsonDecode(event)))
-              as StreamSplitter<Map<String, dynamic>>;
+    }));
+    final Map result = jsonDecode(await wmsStream.first);
+
+    if (mapEquals(result, returnSubscribeResult(tradeStreamId))) {
+      final StreamSplitter<Map<String, dynamic>> _multiStream =
+          StreamSplitter(channel!.stream.map((event) => jsonDecode(event)));
       Stream<Map<String, dynamic>> _mapStream =
           _multiStream.split().where((Map event) => event.containsKey('u'));
       Stream<BookTickerPayload> _bookTickerStream =
@@ -54,16 +56,17 @@ class WMSRepository implements IWMSRepository {
   Future<Either<WMSFailure, Stream<TradePayload>>> getTradeStream(
       String symbol) async {
     const tradeStreamId = 2;
-    channel!.sink.add({
+    channel!.sink.add(jsonEncode({
       "method": "SUBSCRIBE",
       "params": ["$symbol@trade"],
       "id": tradeStreamId
-    });
-    if (jsonDecode(await channel!.stream.last) ==
-        returnSubscribeResult(tradeStreamId)) {
-      final _multiStream =
-          StreamSplitter(channel!.stream.map((event) => jsonDecode(event)))
-              as StreamSplitter<Map<String, dynamic>>;
+    }));
+
+    final Map result = jsonDecode(await wmsStream.first);
+
+    if (mapEquals(result, returnSubscribeResult(tradeStreamId))) {
+      final StreamSplitter<Map<String, dynamic>> _multiStream =
+          StreamSplitter(wmsStream.map((event) => jsonDecode(event)));
       Stream<Map<String, dynamic>> _mapStream = _multiStream
           .split()
           .where((Map event) => event.containsValue('trade'));
@@ -77,7 +80,7 @@ class WMSRepository implements IWMSRepository {
   }
 
   @override
-  Either<WMSFailure, Unit> unconnectWebsocket() {
+  Either<WMSFailure, Unit> disconnectWebsocket() {
     try {
       channel!.sink.close();
       return const Right(unit);

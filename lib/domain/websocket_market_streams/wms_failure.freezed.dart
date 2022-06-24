@@ -20,18 +20,21 @@ mixin _$WMSFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() unknownProperty,
     required TResult Function() serverError,
+    required TResult Function() disconnectFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unknownProperty,
     TResult Function()? serverError,
+    TResult Function()? disconnectFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unknownProperty,
     TResult Function()? serverError,
+    TResult Function()? disconnectFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$WMSFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_UnknownProperty value) unknownProperty,
     required TResult Function(_ServerError value) serverError,
+    required TResult Function(_DisconnectFailure value) disconnectFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_UnknownProperty value)? unknownProperty,
     TResult Function(_ServerError value)? serverError,
+    TResult Function(_DisconnectFailure value)? disconnectFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_UnknownProperty value)? unknownProperty,
     TResult Function(_ServerError value)? serverError,
+    TResult Function(_DisconnectFailure value)? disconnectFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -115,6 +121,7 @@ class _$_UnknownProperty implements _UnknownProperty {
   TResult when<TResult extends Object?>({
     required TResult Function() unknownProperty,
     required TResult Function() serverError,
+    required TResult Function() disconnectFailure,
   }) {
     return unknownProperty();
   }
@@ -124,6 +131,7 @@ class _$_UnknownProperty implements _UnknownProperty {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unknownProperty,
     TResult Function()? serverError,
+    TResult Function()? disconnectFailure,
   }) {
     return unknownProperty?.call();
   }
@@ -133,6 +141,7 @@ class _$_UnknownProperty implements _UnknownProperty {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unknownProperty,
     TResult Function()? serverError,
+    TResult Function()? disconnectFailure,
     required TResult orElse(),
   }) {
     if (unknownProperty != null) {
@@ -146,6 +155,7 @@ class _$_UnknownProperty implements _UnknownProperty {
   TResult map<TResult extends Object?>({
     required TResult Function(_UnknownProperty value) unknownProperty,
     required TResult Function(_ServerError value) serverError,
+    required TResult Function(_DisconnectFailure value) disconnectFailure,
   }) {
     return unknownProperty(this);
   }
@@ -155,6 +165,7 @@ class _$_UnknownProperty implements _UnknownProperty {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_UnknownProperty value)? unknownProperty,
     TResult Function(_ServerError value)? serverError,
+    TResult Function(_DisconnectFailure value)? disconnectFailure,
   }) {
     return unknownProperty?.call(this);
   }
@@ -164,6 +175,7 @@ class _$_UnknownProperty implements _UnknownProperty {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_UnknownProperty value)? unknownProperty,
     TResult Function(_ServerError value)? serverError,
+    TResult Function(_DisconnectFailure value)? disconnectFailure,
     required TResult orElse(),
   }) {
     if (unknownProperty != null) {
@@ -219,6 +231,7 @@ class _$_ServerError implements _ServerError {
   TResult when<TResult extends Object?>({
     required TResult Function() unknownProperty,
     required TResult Function() serverError,
+    required TResult Function() disconnectFailure,
   }) {
     return serverError();
   }
@@ -228,6 +241,7 @@ class _$_ServerError implements _ServerError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unknownProperty,
     TResult Function()? serverError,
+    TResult Function()? disconnectFailure,
   }) {
     return serverError?.call();
   }
@@ -237,6 +251,7 @@ class _$_ServerError implements _ServerError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unknownProperty,
     TResult Function()? serverError,
+    TResult Function()? disconnectFailure,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -250,6 +265,7 @@ class _$_ServerError implements _ServerError {
   TResult map<TResult extends Object?>({
     required TResult Function(_UnknownProperty value) unknownProperty,
     required TResult Function(_ServerError value) serverError,
+    required TResult Function(_DisconnectFailure value) disconnectFailure,
   }) {
     return serverError(this);
   }
@@ -259,6 +275,7 @@ class _$_ServerError implements _ServerError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_UnknownProperty value)? unknownProperty,
     TResult Function(_ServerError value)? serverError,
+    TResult Function(_DisconnectFailure value)? disconnectFailure,
   }) {
     return serverError?.call(this);
   }
@@ -268,6 +285,7 @@ class _$_ServerError implements _ServerError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_UnknownProperty value)? unknownProperty,
     TResult Function(_ServerError value)? serverError,
+    TResult Function(_DisconnectFailure value)? disconnectFailure,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -279,4 +297,115 @@ class _$_ServerError implements _ServerError {
 
 abstract class _ServerError implements WMSFailure {
   const factory _ServerError() = _$_ServerError;
+}
+
+/// @nodoc
+abstract class _$$_DisconnectFailureCopyWith<$Res> {
+  factory _$$_DisconnectFailureCopyWith(_$_DisconnectFailure value,
+          $Res Function(_$_DisconnectFailure) then) =
+      __$$_DisconnectFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_DisconnectFailureCopyWithImpl<$Res>
+    extends _$WMSFailureCopyWithImpl<$Res>
+    implements _$$_DisconnectFailureCopyWith<$Res> {
+  __$$_DisconnectFailureCopyWithImpl(
+      _$_DisconnectFailure _value, $Res Function(_$_DisconnectFailure) _then)
+      : super(_value, (v) => _then(v as _$_DisconnectFailure));
+
+  @override
+  _$_DisconnectFailure get _value => super._value as _$_DisconnectFailure;
+}
+
+/// @nodoc
+
+class _$_DisconnectFailure implements _DisconnectFailure {
+  const _$_DisconnectFailure();
+
+  @override
+  String toString() {
+    return 'WMSFailure.disconnectFailure()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_DisconnectFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unknownProperty,
+    required TResult Function() serverError,
+    required TResult Function() disconnectFailure,
+  }) {
+    return disconnectFailure();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unknownProperty,
+    TResult Function()? serverError,
+    TResult Function()? disconnectFailure,
+  }) {
+    return disconnectFailure?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unknownProperty,
+    TResult Function()? serverError,
+    TResult Function()? disconnectFailure,
+    required TResult orElse(),
+  }) {
+    if (disconnectFailure != null) {
+      return disconnectFailure();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UnknownProperty value) unknownProperty,
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_DisconnectFailure value) disconnectFailure,
+  }) {
+    return disconnectFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_UnknownProperty value)? unknownProperty,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_DisconnectFailure value)? disconnectFailure,
+  }) {
+    return disconnectFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UnknownProperty value)? unknownProperty,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_DisconnectFailure value)? disconnectFailure,
+    required TResult orElse(),
+  }) {
+    if (disconnectFailure != null) {
+      return disconnectFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DisconnectFailure implements WMSFailure {
+  const factory _DisconnectFailure() = _$_DisconnectFailure;
 }

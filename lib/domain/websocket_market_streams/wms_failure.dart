@@ -6,4 +6,5 @@ part 'wms_failure.freezed.dart';
 class WMSFailure with _$WMSFailure{
   const factory WMSFailure.unknownProperty() = _UnknownProperty;
   const factory WMSFailure.serverError() = _ServerError;
+  const factory WMSFailure.disconnectFailure() = _DisconnectFailure;
 }

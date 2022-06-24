@@ -6,7 +6,7 @@ import 'wms_failure.dart';
 
 abstract class IWMSRepository {
   Either<WMSFailure, Unit> connectWebsocket();
-  Either<WMSFailure, Unit> unconnectWebsocket();
+  Either<WMSFailure, Unit> disconnectWebsocket();
   Future<Either<WMSFailure, Stream<TradePayload>>> getTradeStream(String symbol);
   Future<Either<WMSFailure, Stream<BookTickerPayload>>> getBookTickerStream(String symbol);   
 }
