@@ -14,11 +14,16 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+CurrentAveragePrice _$CurrentAveragePriceFromJson(Map<String, dynamic> json) {
+  return _CurrentAveragePrice.fromJson(json);
+}
+
 /// @nodoc
 mixin _$CurrentAveragePrice {
   int get mins => throw _privateConstructorUsedError;
   String get price => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CurrentAveragePriceCopyWith<CurrentAveragePrice> get copyWith =>
       throw _privateConstructorUsedError;
@@ -99,9 +104,12 @@ class __$$_CurrentAveragePriceCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_CurrentAveragePrice implements _CurrentAveragePrice {
   const _$_CurrentAveragePrice({required this.mins, required this.price});
+
+  factory _$_CurrentAveragePrice.fromJson(Map<String, dynamic> json) =>
+      _$$_CurrentAveragePriceFromJson(json);
 
   @override
   final int mins;
@@ -122,6 +130,7 @@ class _$_CurrentAveragePrice implements _CurrentAveragePrice {
             const DeepCollectionEquality().equals(other.price, price));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -133,12 +142,20 @@ class _$_CurrentAveragePrice implements _CurrentAveragePrice {
   _$$_CurrentAveragePriceCopyWith<_$_CurrentAveragePrice> get copyWith =>
       __$$_CurrentAveragePriceCopyWithImpl<_$_CurrentAveragePrice>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CurrentAveragePriceToJson(this);
+  }
 }
 
 abstract class _CurrentAveragePrice implements CurrentAveragePrice {
   const factory _CurrentAveragePrice(
       {required final int mins,
       required final String price}) = _$_CurrentAveragePrice;
+
+  factory _CurrentAveragePrice.fromJson(Map<String, dynamic> json) =
+      _$_CurrentAveragePrice.fromJson;
 
   @override
   int get mins => throw _privateConstructorUsedError;
