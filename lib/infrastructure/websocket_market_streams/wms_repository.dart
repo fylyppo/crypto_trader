@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:async/async.dart';
 import 'package:crypto_trader/domain/websocket_market_streams/book_ticker_payload.dart';
 import 'package:crypto_trader/domain/websocket_market_streams/i_wms_repository.dart';
@@ -7,10 +6,11 @@ import 'package:dartz/dartz.dart';
 import 'package:crypto_trader/domain/websocket_market_streams/wms_failure.dart';
 import 'package:crypto_trader/domain/websocket_market_streams/trade_payload.dart';
 import 'package:flutter/foundation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:web_socket_channel/io.dart';
-
 import 'subscribe_result.dart';
 
+@LazySingleton(as: IWMSRepository)
 class WMSRepository implements IWMSRepository {
   IOWebSocketChannel? channel;
   late Stream wmsStream = channel!.stream.asBroadcastStream();
