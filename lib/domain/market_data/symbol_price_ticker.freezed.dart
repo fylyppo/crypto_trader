@@ -14,11 +14,16 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+SymbolPriceTicker _$SymbolPriceTickerFromJson(Map<String, dynamic> json) {
+  return _SymbolPriceTicker.fromJson(json);
+}
+
 /// @nodoc
 mixin _$SymbolPriceTicker {
   String get symbol => throw _privateConstructorUsedError;
   String get price => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SymbolPriceTickerCopyWith<SymbolPriceTicker> get copyWith =>
       throw _privateConstructorUsedError;
@@ -99,9 +104,12 @@ class __$$_SymbolPriceTickerCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_SymbolPriceTicker implements _SymbolPriceTicker {
   const _$_SymbolPriceTicker({required this.symbol, required this.price});
+
+  factory _$_SymbolPriceTicker.fromJson(Map<String, dynamic> json) =>
+      _$$_SymbolPriceTickerFromJson(json);
 
   @override
   final String symbol;
@@ -122,6 +130,7 @@ class _$_SymbolPriceTicker implements _SymbolPriceTicker {
             const DeepCollectionEquality().equals(other.price, price));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -133,12 +142,20 @@ class _$_SymbolPriceTicker implements _SymbolPriceTicker {
   _$$_SymbolPriceTickerCopyWith<_$_SymbolPriceTicker> get copyWith =>
       __$$_SymbolPriceTickerCopyWithImpl<_$_SymbolPriceTicker>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_SymbolPriceTickerToJson(this);
+  }
 }
 
 abstract class _SymbolPriceTicker implements SymbolPriceTicker {
   const factory _SymbolPriceTicker(
       {required final String symbol,
       required final String price}) = _$_SymbolPriceTicker;
+
+  factory _SymbolPriceTicker.fromJson(Map<String, dynamic> json) =
+      _$_SymbolPriceTicker.fromJson;
 
   @override
   String get symbol => throw _privateConstructorUsedError;
