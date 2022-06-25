@@ -30,6 +30,8 @@ dependencies:
   async: ^2.8.2
   json_serializable: ^6.2.0
   json_annotation: ^4.5.0
+  retrofit: ^3.0.1+1
+  retrofit_generator: ^4.0.1
   
 
 dev_dependencies:
