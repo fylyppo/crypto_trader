@@ -10,77 +10,114 @@
 //
 // ignore_for_file: type=lint
 
-import 'package:auto_route/auto_route.dart' as _i5;
-import 'package:flutter/material.dart' as _i6;
+import 'package:auto_route/auto_route.dart' as _i9;
+import 'package:flutter/material.dart' as _i10;
 
-import '../home/home_page.dart' as _i2;
+import '../current_average_price/current_average_price_page.dart' as _i7;
+import '../home/home_page.dart' as _i5;
+import '../last_trades/last_trades_page.dart' as _i8;
+import '../main/main_page.dart' as _i2;
 import '../sign_in/sign_in_page.dart' as _i3;
 import '../sign_up/sign_up_page.dart' as _i4;
 import '../splash/splash_page.dart' as _i1;
-import 'auth_guard.dart' as _i7;
+import '../symbol_price_ticker/symbol_price_ticker_page.dart' as _i6;
+import 'auth_guard.dart' as _i11;
 
-class AppRouter extends _i5.RootStackRouter {
+class AppRouter extends _i9.RootStackRouter {
   AppRouter(
-      {_i6.GlobalKey<_i6.NavigatorState>? navigatorKey,
+      {_i10.GlobalKey<_i10.NavigatorState>? navigatorKey,
       required this.authGuard})
       : super(navigatorKey);
 
-  final _i7.AuthGuard authGuard;
+  final _i11.AuthGuard authGuard;
 
   @override
-  final Map<String, _i5.PageFactory> pagesMap = {
+  final Map<String, _i9.PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
-      return _i5.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.SplashPage());
     },
-    HomeRoute.name: (routeData) {
-      return _i5.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i2.HomePage());
+    MainRoute.name: (routeData) {
+      return _i9.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i2.MainPage());
     },
     SignInRoute.name: (routeData) {
       final args = routeData.argsAs<SignInRouteArgs>();
-      return _i5.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i5.WrappedRoute(
+          child: _i9.WrappedRoute(
               child: _i3.SignInPage(key: args.key, onSuccess: args.onSuccess)));
     },
     SignUpRoute.name: (routeData) {
-      return _i5.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i5.WrappedRoute(child: const _i4.SignUpPage()));
+          child: _i9.WrappedRoute(child: const _i4.SignUpPage()));
+    },
+    HomeRoute.name: (routeData) {
+      return _i9.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i5.HomePage());
+    },
+    SymbolPriceTickerRoute.name: (routeData) {
+      return _i9.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i6.SymbolPriceTickerPage());
+    },
+    CurrentAveragePriceRoute.name: (routeData) {
+      return _i9.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i7.CurrentAveragePricePage());
+    },
+    LastTradesRoute.name: (routeData) {
+      return _i9.MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: _i9.WrappedRoute(child: const _i8.LastTradesPage()),
+          maintainState: false);
     }
   };
 
   @override
-  List<_i5.RouteConfig> get routes => [
-        _i5.RouteConfig(SplashRoute.name, path: '/'),
-        _i5.RouteConfig(HomeRoute.name,
-            path: '/home-page', guards: [authGuard]),
-        _i5.RouteConfig(SignInRoute.name, path: '/sign-in-page'),
-        _i5.RouteConfig(SignUpRoute.name, path: '/sign-up-page')
+  List<_i9.RouteConfig> get routes => [
+        _i9.RouteConfig(SplashRoute.name, path: '/'),
+        _i9.RouteConfig(MainRoute.name, path: '/main-page', guards: [
+          authGuard
+        ], children: [
+          _i9.RouteConfig('#redirect',
+              path: '',
+              parent: MainRoute.name,
+              redirectTo: 'home',
+              fullMatch: true),
+          _i9.RouteConfig(HomeRoute.name, path: 'home', parent: MainRoute.name),
+          _i9.RouteConfig(SymbolPriceTickerRoute.name,
+              path: 'change', parent: MainRoute.name),
+          _i9.RouteConfig(CurrentAveragePriceRoute.name,
+              path: 'price', parent: MainRoute.name),
+          _i9.RouteConfig(LastTradesRoute.name,
+              path: 'current_price', parent: MainRoute.name)
+        ]),
+        _i9.RouteConfig(SignInRoute.name, path: '/sign-in-page'),
+        _i9.RouteConfig(SignUpRoute.name, path: '/sign-up-page')
       ];
 }
 
 /// generated route for
 /// [_i1.SplashPage]
-class SplashRoute extends _i5.PageRouteInfo<void> {
+class SplashRoute extends _i9.PageRouteInfo<void> {
   const SplashRoute() : super(SplashRoute.name, path: '/');
 
   static const String name = 'SplashRoute';
 }
 
 /// generated route for
-/// [_i2.HomePage]
-class HomeRoute extends _i5.PageRouteInfo<void> {
-  const HomeRoute() : super(HomeRoute.name, path: '/home-page');
+/// [_i2.MainPage]
+class MainRoute extends _i9.PageRouteInfo<void> {
+  const MainRoute({List<_i9.PageRouteInfo>? children})
+      : super(MainRoute.name, path: '/main-page', initialChildren: children);
 
-  static const String name = 'HomeRoute';
+  static const String name = 'MainRoute';
 }
 
 /// generated route for
 /// [_i3.SignInPage]
-class SignInRoute extends _i5.PageRouteInfo<SignInRouteArgs> {
-  SignInRoute({_i6.Key? key, required void Function() onSuccess})
+class SignInRoute extends _i9.PageRouteInfo<SignInRouteArgs> {
+  SignInRoute({_i10.Key? key, required void Function() onSuccess})
       : super(SignInRoute.name,
             path: '/sign-in-page',
             args: SignInRouteArgs(key: key, onSuccess: onSuccess));
@@ -91,7 +128,7 @@ class SignInRoute extends _i5.PageRouteInfo<SignInRouteArgs> {
 class SignInRouteArgs {
   const SignInRouteArgs({this.key, required this.onSuccess});
 
-  final _i6.Key? key;
+  final _i10.Key? key;
 
   final void Function() onSuccess;
 
@@ -103,8 +140,42 @@ class SignInRouteArgs {
 
 /// generated route for
 /// [_i4.SignUpPage]
-class SignUpRoute extends _i5.PageRouteInfo<void> {
+class SignUpRoute extends _i9.PageRouteInfo<void> {
   const SignUpRoute() : super(SignUpRoute.name, path: '/sign-up-page');
 
   static const String name = 'SignUpRoute';
+}
+
+/// generated route for
+/// [_i5.HomePage]
+class HomeRoute extends _i9.PageRouteInfo<void> {
+  const HomeRoute() : super(HomeRoute.name, path: 'home');
+
+  static const String name = 'HomeRoute';
+}
+
+/// generated route for
+/// [_i6.SymbolPriceTickerPage]
+class SymbolPriceTickerRoute extends _i9.PageRouteInfo<void> {
+  const SymbolPriceTickerRoute()
+      : super(SymbolPriceTickerRoute.name, path: 'change');
+
+  static const String name = 'SymbolPriceTickerRoute';
+}
+
+/// generated route for
+/// [_i7.CurrentAveragePricePage]
+class CurrentAveragePriceRoute extends _i9.PageRouteInfo<void> {
+  const CurrentAveragePriceRoute()
+      : super(CurrentAveragePriceRoute.name, path: 'price');
+
+  static const String name = 'CurrentAveragePriceRoute';
+}
+
+/// generated route for
+/// [_i8.LastTradesPage]
+class LastTradesRoute extends _i9.PageRouteInfo<void> {
+  const LastTradesRoute() : super(LastTradesRoute.name, path: 'current_price');
+
+  static const String name = 'LastTradesRoute';
 }
