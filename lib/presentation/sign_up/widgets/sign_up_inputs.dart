@@ -10,7 +10,6 @@ class EmailAddressInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SignUpFormBloc, SignUpFormState>(
       builder: (context, state) {
-        print(state.validate && state.emailAddress.invalid);
         return TextField(
           key: const Key('SignUpFormForm_emailAddressInput_textField'),
           onChanged: (emailAddress) =>

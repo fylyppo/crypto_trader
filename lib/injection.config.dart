@@ -59,8 +59,10 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i14.SignInFormBloc(get<_i8.IAuthFacade>()));
   gh.factory<_i15.SignUpFormBloc>(
       () => _i15.SignUpFormBloc(get<_i8.IAuthFacade>()));
-  gh.factory<_i16.TradeBloc>(() => _i16.TradeBloc(get<_i12.IWMSRepository>()));
-  gh.factory<_i17.WmsBloc>(() => _i17.WmsBloc(get<_i12.IWMSRepository>()));
+  gh.lazySingleton<_i16.TradeBloc>(
+      () => _i16.TradeBloc(get<_i12.IWMSRepository>()));
+  gh.lazySingleton<_i17.WmsBloc>(
+      () => _i17.WmsBloc(get<_i12.IWMSRepository>()));
   gh.singleton<_i18.AuthBloc>(_i18.AuthBloc(get<_i8.IAuthFacade>()));
   gh.factory<_i19.BookTickerBloc>(
       () => _i19.BookTickerBloc(get<_i12.IWMSRepository>()));

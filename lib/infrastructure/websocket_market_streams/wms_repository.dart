@@ -22,7 +22,6 @@ class WMSRepository implements IWMSRepository {
           Uri.parse('wss://stream.binance.com:9443/ws'));
       return const Right(unit);
     } catch (e) {
-      print(e);
       return const Left(WMSFailure.serverError());
     }
   }

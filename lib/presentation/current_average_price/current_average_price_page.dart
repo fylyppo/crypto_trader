@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../application/market_data/current_average_bloc/current_average_price_bloc.dart';
@@ -13,17 +11,17 @@ class CurrentAveragePricePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Current Average Price'),
+        title: const Text('Current Average Price'),
       ),
       body: BlocProvider(
         create: (context) => getIt<CurrentAveragePriceBloc>(),
         child: BlocBuilder<CurrentAveragePriceBloc, CurrentAveragePriceState>(
           builder: (context, state) {
             return state.map(
-                initial: (value) => CircularProgressIndicator(),
+                initial: (value) => const CircularProgressIndicator(),
                 capLoaded: (value) => Text(value.cap.price),
-                capLoading: (value) => CircularProgressIndicator(),
-                capFailure: (value) => Text('err'));
+                capLoading: (value) => const CircularProgressIndicator(),
+                capFailure: (value) => const Text('err'));
           },
         ),
       ),
