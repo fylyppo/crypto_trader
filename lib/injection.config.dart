@@ -11,16 +11,18 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:google_sign_in/google_sign_in.dart' as _i7;
 import 'package:injectable/injectable.dart' as _i2;
 
-import 'application/auth/bloc/auth_bloc.dart' as _i18;
+import 'application/auth/bloc/auth_bloc.dart' as _i19;
 import 'application/auth/sign_in_form/bloc/sign_in_form_bloc.dart' as _i14;
 import 'application/auth/sign_up_form/bloc/sign_up_form_bloc.dart' as _i15;
 import 'application/market_data/current_average_bloc/current_average_price_bloc.dart'
-    as _i20;
-import 'application/websocket_market_streams/book_ticker_bloc/book_ticker_bloc.dart'
-    as _i19;
-import 'application/websocket_market_streams/trade_bloc/trade_bloc.dart'
+    as _i21;
+import 'application/market_data/symbol_price_ticker_bloc/symbol_price_ticker_bloc.dart'
     as _i16;
-import 'application/websocket_market_streams/wms_bloc/wms_bloc.dart' as _i17;
+import 'application/websocket_market_streams/book_ticker_bloc/book_ticker_bloc.dart'
+    as _i20;
+import 'application/websocket_market_streams/trade_bloc/trade_bloc.dart'
+    as _i17;
+import 'application/websocket_market_streams/wms_bloc/wms_bloc.dart' as _i18;
 import 'domain/auth/i_auth_facade.dart' as _i8;
 import 'domain/market_data/i_market_data_repository.dart' as _i10;
 import 'domain/websocket_market_streams/i_wms_repository.dart' as _i12;
@@ -28,8 +30,8 @@ import 'infrastructure/auth/firebase_auth_facade.dart' as _i9;
 import 'infrastructure/core/datasources/remote/binance_rest_api_client.dart'
     as _i3;
 import 'infrastructure/core/datasources/remote/binance_rest_api_injectable_module.dart'
-    as _i21;
-import 'infrastructure/core/firebase_injectable_module.dart' as _i22;
+    as _i22;
+import 'infrastructure/core/firebase_injectable_module.dart' as _i23;
 import 'infrastructure/market_data/market_data_repository.dart' as _i11;
 import 'infrastructure/websocket_market_streams/wms_repository.dart'
     as _i13; // ignore_for_file: unnecessary_lambdas
@@ -59,19 +61,19 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i14.SignInFormBloc(get<_i8.IAuthFacade>()));
   gh.factory<_i15.SignUpFormBloc>(
       () => _i15.SignUpFormBloc(get<_i8.IAuthFacade>()));
-  gh.lazySingleton<_i16.TradeBloc>(
-      () => _i16.TradeBloc(get<_i12.IWMSRepository>()));
-  gh.lazySingleton<_i17.WmsBloc>(
-      () => _i17.WmsBloc(get<_i12.IWMSRepository>()));
-  gh.singleton<_i18.AuthBloc>(_i18.AuthBloc(get<_i8.IAuthFacade>()));
-  gh.factory<_i19.BookTickerBloc>(
-      () => _i19.BookTickerBloc(get<_i12.IWMSRepository>()));
-  gh.factory<_i20.CurrentAveragePriceBloc>(
-      () => _i20.CurrentAveragePriceBloc(get<_i10.IMarketDataRepository>()));
+  gh.factory<_i16.SymbolPriceTickerBloc>(
+      () => _i16.SymbolPriceTickerBloc(get<_i11.MarketDataRepository>()));
+  gh.factory<_i17.TradeBloc>(() => _i17.TradeBloc(get<_i12.IWMSRepository>()));
+  gh.factory<_i18.WmsBloc>(() => _i18.WmsBloc(get<_i12.IWMSRepository>()));
+  gh.singleton<_i19.AuthBloc>(_i19.AuthBloc(get<_i8.IAuthFacade>()));
+  gh.factory<_i20.BookTickerBloc>(
+      () => _i20.BookTickerBloc(get<_i12.IWMSRepository>()));
+  gh.factory<_i21.CurrentAveragePriceBloc>(
+      () => _i21.CurrentAveragePriceBloc(get<_i10.IMarketDataRepository>()));
   return get;
 }
 
 class _$BinanceRestApiInjectableModule
-    extends _i21.BinanceRestApiInjectableModule {}
+    extends _i22.BinanceRestApiInjectableModule {}
 
-class _$FirebaseInjectableModule extends _i22.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i23.FirebaseInjectableModule {}
