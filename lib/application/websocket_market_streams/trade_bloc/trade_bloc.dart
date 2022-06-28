@@ -11,13 +11,27 @@ part 'trade_bloc.freezed.dart';
 @injectable
 class TradeBloc extends Bloc<TradeEvent, TradeState> {
   final IWMSRepository _wmsRepository;
-  
+  late String symbol;
+
   TradeBloc(this._wmsRepository) : super(const _Initial()) {
     on<TradeEvent>((event, emit) async {
-      final _failureOrSuccess = await _wmsRepository.getTradeStream(event.symbol);
-      emit(_failureOrSuccess.fold((f) => const TradeState.tradeStreamError(), (stream) {
+      symbol = event.symbol;
+      final _failureOrSuccess =
+          await _wmsRepository.subscribeTradeStream(event.symbol);
+      print("$_failureOrSuccess tradebloc");
+      emit(_failureOrSuccess.fold((f) => const TradeState.tradeStreamError(),
+          (stream) {
         return TradeState.tradeStreaming(stream);
-      } ));
+      }));
     });
+  }
+
+  @mustCallSuper
+  @override
+  Future<void> close() async {
+    final successOrFailure =
+        await _wmsRepository.unsubscribeTradeStream(symbol);
+        print(successOrFailure);
+    return super.close();
   }
 }

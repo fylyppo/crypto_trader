@@ -14,6 +14,7 @@ class WmsBloc extends Bloc<WmsEvent, WmsState> {
   WmsBloc(this._wmsRepository) : super(const _Initial()) {
     on<_ConnectWebsocket>((event, emit) {
       final _failureOrSuccess = _wmsRepository.connectWebsocket();
+      print("$_failureOrSuccess wms bloc" );
       emit(_failureOrSuccess.fold((f) => const WmsState.serverError(), (success) => const WmsState.connected()));
     });
     on<_DisconnectWebsocket>((event, emit) {

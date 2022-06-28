@@ -8,12 +8,15 @@ import 'package:crypto_trader/domain/websocket_market_streams/trade_payload.dart
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:web_socket_channel/io.dart';
-import 'subscribe_result.dart';
+import 'subscription_results.dart';
 
 @LazySingleton(as: IWMSRepository)
 class WMSRepository implements IWMSRepository {
   IOWebSocketChannel? channel;
   late Stream wmsStream = channel!.stream.asBroadcastStream();
+
+  static const tradeStreamId = 1;
+  static const bookTickerStreamId = 2;
 
   @override
   Either<WMSFailure, Unit> connectWebsocket() {
@@ -27,43 +30,29 @@ class WMSRepository implements IWMSRepository {
   }
 
   @override
-  Future<Either<WMSFailure, Stream<BookTickerPayload>>> getBookTickerStream(
-      String symbol) async {
-    const tradeStreamId = 1;
-    channel!.sink.add(jsonEncode({
-      "method": "SUBSCRIBE",
-      "params": ["$symbol@bookTicker"],
-      "id": tradeStreamId
-    }));
-    final Map result = jsonDecode(await wmsStream.first);
-
-    if (mapEquals(result, returnSubscribeResult(tradeStreamId))) {
-      final StreamSplitter<Map<String, dynamic>> _multiStream =
-          StreamSplitter(channel!.stream.map((event) => jsonDecode(event)));
-      Stream<Map<String, dynamic>> _mapStream =
-          _multiStream.split().where((Map event) => event.containsKey('u'));
-      Stream<BookTickerPayload> _bookTickerStream =
-          _mapStream.map((e) => BookTickerPayload.fromJson(e));
-      _multiStream.close();
-      return Right(_bookTickerStream);
-    } else {
+  Either<WMSFailure, Unit> disconnectWebsocket() {
+    try {
+      channel!.sink.close();
+      return const Right(unit);
+    } catch (_) {
       return const Left(WMSFailure.serverError());
     }
   }
 
   @override
-  Future<Either<WMSFailure, Stream<TradePayload>>> getTradeStream(
+  Future<Either<WMSFailure, Stream<TradePayload>>> subscribeTradeStream(
       String symbol) async {
-    const tradeStreamId = 2;
     channel!.sink.add(jsonEncode({
       "method": "SUBSCRIBE",
       "params": ["$symbol@trade"],
       "id": tradeStreamId
     }));
-
-    final Map result = jsonDecode(await wmsStream.first);
-
-    if (mapEquals(result, returnSubscribeResult(tradeStreamId))) {
+    wmsStream.listen((event) {print(event);});
+    final bool isConnected = await wmsStream
+        .contains(jsonEncode(returnSubscriptionResult(tradeStreamId)))
+        .timeout(const Duration(seconds: 3), onTimeout: (() => false));
+        print(isConnected);
+    if (isConnected) {
       final StreamSplitter<Map<String, dynamic>> _multiStream =
           StreamSplitter(wmsStream.map((event) => jsonDecode(event)));
       Stream<Map<String, dynamic>> _mapStream = _multiStream
@@ -79,12 +68,51 @@ class WMSRepository implements IWMSRepository {
   }
 
   @override
-  Either<WMSFailure, Unit> disconnectWebsocket() {
-    try {
-      channel!.sink.close();
+  Future<Either<WMSFailure, Unit>> unsubscribeTradeStream(
+      String symbol) async {
+    channel!.sink.add(jsonEncode({
+      "method": "UNSUBSCRIBE",
+      "params": ["$symbol@trade"],
+      "id": tradeStreamId
+    }));
+    final bool isDisconnected = await wmsStream
+        .contains(jsonEncode(returnSubscriptionResult(tradeStreamId)))
+        .timeout(const Duration(seconds: 3), onTimeout: (() => false));
+    if (isDisconnected) {
       return const Right(unit);
-    } catch (_) {
+    } else {
       return const Left(WMSFailure.serverError());
     }
+  }
+
+  @override
+  Future<Either<WMSFailure, Stream<BookTickerPayload>>>
+      subscribeBookTickerStream(String symbol) async {
+    channel!.sink.add(jsonEncode({
+      "method": "SUBSCRIBE",
+      "params": ["$symbol@bookTicker"],
+      "id": bookTickerStreamId
+    }));
+    final Map result = jsonDecode(await wmsStream.first);
+
+    if (mapEquals(result, returnSubscriptionResult(bookTickerStreamId))) {
+      final StreamSplitter<Map<String, dynamic>> _multiStream =
+          StreamSplitter(channel!.stream.map((event) => jsonDecode(event)));
+      Stream<Map<String, dynamic>> _mapStream =
+          _multiStream.split().where((Map event) => event.containsKey('u'));
+      Stream<BookTickerPayload> _bookTickerStream =
+          _mapStream.map((e) => BookTickerPayload.fromJson(e));
+      _multiStream.close();
+      return Right(_bookTickerStream);
+    } else {
+      return const Left(WMSFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<WMSFailure, Unit>>
+      unsubscribeBookTickerStream(String symbol) {
+    // TODO: implement unsubscribeBookTickerStream
+    throw UnimplementedError();
   }
 }
