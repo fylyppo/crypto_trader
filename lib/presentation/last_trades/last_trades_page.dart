@@ -13,23 +13,14 @@ class LastTradesPage extends StatelessWidget implements AutoRouteWrapper {
   Widget wrappedRoute(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) =>
-              getIt<WmsBloc>()..add(const WmsEvent.connectWebsocket()),
+        BlocProvider.value(
+          value: getIt<WmsBloc>(),
         ),
         BlocProvider(
-          create: (context) => getIt<TradeBloc>(),
+          create: (context) => getIt<TradeBloc>()..add(const TradeEvent.getTradeStream(symbol: 'bnbbtc')),
         )
       ],
-      child: BlocListener<WmsBloc, WmsState>(
-        listener: (context, state) {
-          state.mapOrNull(
-              connected: ((value) => context
-                  .read<TradeBloc>()
-                  .add(const TradeEvent.getTradeStream(symbol: 'bnbbtc'))));
-        },
-        child: this,
-      ),
+      child: this,
     );
   }
 

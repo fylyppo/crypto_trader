@@ -64,7 +64,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.factory<_i16.SymbolPriceTickerBloc>(
       () => _i16.SymbolPriceTickerBloc(get<_i11.MarketDataRepository>()));
   gh.factory<_i17.TradeBloc>(() => _i17.TradeBloc(get<_i12.IWMSRepository>()));
-  gh.factory<_i18.WmsBloc>(() => _i18.WmsBloc(get<_i12.IWMSRepository>()));
+  gh.lazySingleton<_i18.WmsBloc>(
+      () => _i18.WmsBloc(get<_i12.IWMSRepository>()));
   gh.singleton<_i19.AuthBloc>(_i19.AuthBloc(get<_i8.IAuthFacade>()));
   gh.factory<_i20.BookTickerBloc>(
       () => _i20.BookTickerBloc(get<_i12.IWMSRepository>()));

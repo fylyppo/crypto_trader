@@ -47,11 +47,9 @@ class WMSRepository implements IWMSRepository {
       "params": ["$symbol@trade"],
       "id": tradeStreamId
     }));
-    wmsStream.listen((event) {print(event);});
     final bool isConnected = await wmsStream
         .contains(jsonEncode(returnSubscriptionResult(tradeStreamId)))
         .timeout(const Duration(seconds: 3), onTimeout: (() => false));
-        print(isConnected);
     if (isConnected) {
       final StreamSplitter<Map<String, dynamic>> _multiStream =
           StreamSplitter(wmsStream.map((event) => jsonDecode(event)));
@@ -68,8 +66,7 @@ class WMSRepository implements IWMSRepository {
   }
 
   @override
-  Future<Either<WMSFailure, Unit>> unsubscribeTradeStream(
-      String symbol) async {
+  Future<Either<WMSFailure, Unit>> unsubscribeTradeStream(String symbol) async {
     channel!.sink.add(jsonEncode({
       "method": "UNSUBSCRIBE",
       "params": ["$symbol@trade"],
@@ -110,8 +107,7 @@ class WMSRepository implements IWMSRepository {
   }
 
   @override
-  Future<Either<WMSFailure, Unit>>
-      unsubscribeBookTickerStream(String symbol) {
+  Future<Either<WMSFailure, Unit>> unsubscribeBookTickerStream(String symbol) {
     // TODO: implement unsubscribeBookTickerStream
     throw UnimplementedError();
   }

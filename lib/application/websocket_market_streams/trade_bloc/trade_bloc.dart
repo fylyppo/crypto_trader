@@ -18,7 +18,6 @@ class TradeBloc extends Bloc<TradeEvent, TradeState> {
       symbol = event.symbol;
       final _failureOrSuccess =
           await _wmsRepository.subscribeTradeStream(event.symbol);
-      print("$_failureOrSuccess tradebloc");
       emit(_failureOrSuccess.fold((f) => const TradeState.tradeStreamError(),
           (stream) {
         return TradeState.tradeStreaming(stream);
@@ -29,9 +28,7 @@ class TradeBloc extends Bloc<TradeEvent, TradeState> {
   @mustCallSuper
   @override
   Future<void> close() async {
-    final successOrFailure =
-        await _wmsRepository.unsubscribeTradeStream(symbol);
-        print(successOrFailure);
+    await _wmsRepository.unsubscribeTradeStream(symbol);
     return super.close();
   }
 }
