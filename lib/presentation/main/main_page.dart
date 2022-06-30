@@ -11,7 +11,7 @@ class MainPage extends StatelessWidget {
         routes: const [
           HomeRoute(),
           SymbolPriceTickerRoute(),
-          CurrentAveragePriceRoute(),
+          PriceChangeStatsRoute(),
           LastTradesRoute()
         ],
         builder: (context, child, _) {

@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../application/market_data/price_change_stats_bloc/price_change_stats_bloc.dart';
 import '../../injection.dart';
 
-class CurrentAveragePricePage extends StatelessWidget {
-  const CurrentAveragePricePage({Key? key}) : super(key: key);
+class PriceChangeStatsPage extends StatelessWidget {
+  const PriceChangeStatsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

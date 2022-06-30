@@ -13,10 +13,10 @@
 import 'package:auto_route/auto_route.dart' as _i9;
 import 'package:flutter/material.dart' as _i10;
 
-import '../current_average_price/current_average_price_page.dart' as _i7;
 import '../home/home_page.dart' as _i5;
 import '../last_trades/last_trades_page.dart' as _i8;
 import '../main/main_page.dart' as _i2;
+import '../price_change_stats/price_change_stats_page.dart' as _i7;
 import '../sign_in/sign_in_page.dart' as _i3;
 import '../sign_up/sign_up_page.dart' as _i4;
 import '../splash/splash_page.dart' as _i1;
@@ -61,9 +61,9 @@ class AppRouter extends _i9.RootStackRouter {
       return _i9.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i6.SymbolPriceTickerPage());
     },
-    CurrentAveragePriceRoute.name: (routeData) {
+    PriceChangeStatsRoute.name: (routeData) {
       return _i9.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i7.CurrentAveragePricePage());
+          routeData: routeData, child: const _i7.PriceChangeStatsPage());
     },
     LastTradesRoute.name: (routeData) {
       return _i9.MaterialPageX<dynamic>(
@@ -87,7 +87,7 @@ class AppRouter extends _i9.RootStackRouter {
           _i9.RouteConfig(HomeRoute.name, path: 'home', parent: MainRoute.name),
           _i9.RouteConfig(SymbolPriceTickerRoute.name,
               path: 'change', parent: MainRoute.name),
-          _i9.RouteConfig(CurrentAveragePriceRoute.name,
+          _i9.RouteConfig(PriceChangeStatsRoute.name,
               path: 'price', parent: MainRoute.name),
           _i9.RouteConfig(LastTradesRoute.name,
               path: 'current_price', parent: MainRoute.name)
@@ -164,12 +164,12 @@ class SymbolPriceTickerRoute extends _i9.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i7.CurrentAveragePricePage]
-class CurrentAveragePriceRoute extends _i9.PageRouteInfo<void> {
-  const CurrentAveragePriceRoute()
-      : super(CurrentAveragePriceRoute.name, path: 'price');
+/// [_i7.PriceChangeStatsPage]
+class PriceChangeStatsRoute extends _i9.PageRouteInfo<void> {
+  const PriceChangeStatsRoute()
+      : super(PriceChangeStatsRoute.name, path: 'price');
 
-  static const String name = 'CurrentAveragePriceRoute';
+  static const String name = 'PriceChangeStatsRoute';
 }
 
 /// generated route for
