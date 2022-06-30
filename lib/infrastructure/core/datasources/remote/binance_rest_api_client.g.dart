@@ -53,18 +53,21 @@ class _BinanceRestApiClient implements BinanceRestApiClient {
   }
 
   @override
-  Future<CurrentAveragePrice> getCurrentAveragePrice(symbol) async {
+  Future<List<PriceChangeStats>> getPriceChangeStats(symbols) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'symbol': symbol};
+    final queryParameters = <String, dynamic>{r'symbols': symbols};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<CurrentAveragePrice>(
+    final _result = await _dio.fetch<List<dynamic>>(
+        _setStreamType<List<PriceChangeStats>>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/api/v3/avgPrice',
+                .compose(_dio.options, '/api/v3/ticker/24hr',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = CurrentAveragePrice.fromJson(_result.data!);
+    var value = _result.data!
+        .map(
+            (dynamic i) => PriceChangeStats.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 

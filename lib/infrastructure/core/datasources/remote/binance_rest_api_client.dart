@@ -1,4 +1,4 @@
-import 'package:crypto_trader/domain/market_data/current_average_price.dart';
+import 'package:crypto_trader/domain/market_data/price_change_stats.dart';
 import 'package:crypto_trader/domain/market_data/symbol_price_ticker.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
@@ -15,6 +15,6 @@ abstract class BinanceRestApiClient {
   @GET("/api/v3/ticker/price")
   Future<List<SymbolPriceTicker>> getSymbolsPriceTicker(@Query("symbols") String symbols,);
 
-  @GET("/api/v3/avgPrice")
-  Future<CurrentAveragePrice> getCurrentAveragePrice(@Query("symbol") String symbol,);
+  @GET("/api/v3/ticker/24hr")
+  Future<List<PriceChangeStats>> getPriceChangeStats(@Query("symbols") String symbols,);
 }
