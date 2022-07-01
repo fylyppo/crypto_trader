@@ -1,5 +1,6 @@
 import 'package:crypto_trader/domain/market_data/price_change_stats.dart';
 import 'package:crypto_trader/domain/market_data/symbol_price_ticker.dart';
+import 'package:crypto_trader/domain/wallet/available_coin.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
@@ -17,4 +18,7 @@ abstract class BinanceRestApiClient {
 
   @GET("/api/v3/ticker/24hr")
   Future<List<PriceChangeStats>> getPriceChangeStats(@Query("symbols") String symbols,);
+
+  @GET("/sapi/v1/capital/config/getall")
+  Future<List<AvailableCoin>> getAllCoinsInformation(@Query("timestamp") String timestamp);
 }
