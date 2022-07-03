@@ -15,16 +15,15 @@ class OrderDto with _$OrderDto {
     double? price,
   }) = _OrderDto;
 
-    factory OrderDto.fromDomain(Order order) {
+  factory OrderDto.fromDomain(Order order) {
     return OrderDto(
       symbol: order.symbol,
-       side: order.side.name.toUpperCase(), 
-       type: order.type.name.toUpperCase(),
-       timeInForce: order.timeInForce?.name.toUpperCase(),
-       quantity: order.quantity,
-       price: order.price,
-       );
-
+      side: order.side.name.toUpperCase(),
+      type: order.type.name.toUpperCase(),
+      timeInForce: order.timeInForce?.name.toUpperCase(),
+      quantity: order.quantity,
+      price: order.price,
+    );
   }
 
   factory OrderDto.fromJson(Map<String, dynamic> json) =>
