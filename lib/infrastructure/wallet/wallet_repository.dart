@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:crypto_trader/domain/wallet/available_coin.dart';
 import 'package:crypto_trader/domain/wallet/i_wallet_repository.dart';
 import 'package:crypto_trader/domain/wallet/wallet_failure.dart';
