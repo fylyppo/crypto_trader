@@ -89,6 +89,23 @@ class _BinanceRestApiClient implements BinanceRestApiClient {
     return value;
   }
 
+  @override
+  Future<SentOrderResponse> postNewTradeOrder(order) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(order.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<SentOrderResponse>(
+            Options(method: 'POST', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/api/v3/order',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = SentOrderResponse.fromJson(_result.data!);
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

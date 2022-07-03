@@ -1,8 +1,10 @@
 import 'package:crypto_trader/domain/market_data/price_change_stats.dart';
 import 'package:crypto_trader/domain/market_data/symbol_price_ticker.dart';
 import 'package:crypto_trader/domain/wallet/available_coin.dart';
+import 'package:crypto_trader/infrastructure/spot/order_dtos.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
+import '../../../../domain/spot/sent_order_response.dart';
 
 part 'binance_rest_api_client.g.dart';
 
@@ -21,4 +23,7 @@ abstract class BinanceRestApiClient {
 
   @GET("/sapi/v1/capital/config/getall")
   Future<List<AvailableCoin>> getAllCoinsInformation(@Query("timestamp") String timestamp);
+
+  @POST("/api/v3/order")
+  Future<SentOrderResponse> postNewTradeOrder(@Body() OrderDto order);
 }
