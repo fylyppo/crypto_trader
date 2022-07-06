@@ -357,7 +357,7 @@ mixin _$SymbolPriceTickerState {
     required TResult Function(SymbolPriceTicker spt) sptLoaded,
     required TResult Function(List<SymbolPriceTicker> sptList) sptsLoaded,
     required TResult Function() sptLoading,
-    required TResult Function(MarketDataFailure failure) sptFailure,
+    required TResult Function(ApiFailure failure) sptFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -366,7 +366,7 @@ mixin _$SymbolPriceTickerState {
     TResult Function(SymbolPriceTicker spt)? sptLoaded,
     TResult Function(List<SymbolPriceTicker> sptList)? sptsLoaded,
     TResult Function()? sptLoading,
-    TResult Function(MarketDataFailure failure)? sptFailure,
+    TResult Function(ApiFailure failure)? sptFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -375,7 +375,7 @@ mixin _$SymbolPriceTickerState {
     TResult Function(SymbolPriceTicker spt)? sptLoaded,
     TResult Function(List<SymbolPriceTicker> sptList)? sptsLoaded,
     TResult Function()? sptLoading,
-    TResult Function(MarketDataFailure failure)? sptFailure,
+    TResult Function(ApiFailure failure)? sptFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -470,7 +470,7 @@ class _$_Initial implements _Initial {
     required TResult Function(SymbolPriceTicker spt) sptLoaded,
     required TResult Function(List<SymbolPriceTicker> sptList) sptsLoaded,
     required TResult Function() sptLoading,
-    required TResult Function(MarketDataFailure failure) sptFailure,
+    required TResult Function(ApiFailure failure) sptFailure,
   }) {
     return initial();
   }
@@ -482,7 +482,7 @@ class _$_Initial implements _Initial {
     TResult Function(SymbolPriceTicker spt)? sptLoaded,
     TResult Function(List<SymbolPriceTicker> sptList)? sptsLoaded,
     TResult Function()? sptLoading,
-    TResult Function(MarketDataFailure failure)? sptFailure,
+    TResult Function(ApiFailure failure)? sptFailure,
   }) {
     return initial?.call();
   }
@@ -494,7 +494,7 @@ class _$_Initial implements _Initial {
     TResult Function(SymbolPriceTicker spt)? sptLoaded,
     TResult Function(List<SymbolPriceTicker> sptList)? sptsLoaded,
     TResult Function()? sptLoading,
-    TResult Function(MarketDataFailure failure)? sptFailure,
+    TResult Function(ApiFailure failure)? sptFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -626,7 +626,7 @@ class _$_SPTLoaded implements _SPTLoaded {
     required TResult Function(SymbolPriceTicker spt) sptLoaded,
     required TResult Function(List<SymbolPriceTicker> sptList) sptsLoaded,
     required TResult Function() sptLoading,
-    required TResult Function(MarketDataFailure failure) sptFailure,
+    required TResult Function(ApiFailure failure) sptFailure,
   }) {
     return sptLoaded(spt);
   }
@@ -638,7 +638,7 @@ class _$_SPTLoaded implements _SPTLoaded {
     TResult Function(SymbolPriceTicker spt)? sptLoaded,
     TResult Function(List<SymbolPriceTicker> sptList)? sptsLoaded,
     TResult Function()? sptLoading,
-    TResult Function(MarketDataFailure failure)? sptFailure,
+    TResult Function(ApiFailure failure)? sptFailure,
   }) {
     return sptLoaded?.call(spt);
   }
@@ -650,7 +650,7 @@ class _$_SPTLoaded implements _SPTLoaded {
     TResult Function(SymbolPriceTicker spt)? sptLoaded,
     TResult Function(List<SymbolPriceTicker> sptList)? sptsLoaded,
     TResult Function()? sptLoading,
-    TResult Function(MarketDataFailure failure)? sptFailure,
+    TResult Function(ApiFailure failure)? sptFailure,
     required TResult orElse(),
   }) {
     if (sptLoaded != null) {
@@ -783,7 +783,7 @@ class _$_SPTsLoaded implements _SPTsLoaded {
     required TResult Function(SymbolPriceTicker spt) sptLoaded,
     required TResult Function(List<SymbolPriceTicker> sptList) sptsLoaded,
     required TResult Function() sptLoading,
-    required TResult Function(MarketDataFailure failure) sptFailure,
+    required TResult Function(ApiFailure failure) sptFailure,
   }) {
     return sptsLoaded(sptList);
   }
@@ -795,7 +795,7 @@ class _$_SPTsLoaded implements _SPTsLoaded {
     TResult Function(SymbolPriceTicker spt)? sptLoaded,
     TResult Function(List<SymbolPriceTicker> sptList)? sptsLoaded,
     TResult Function()? sptLoading,
-    TResult Function(MarketDataFailure failure)? sptFailure,
+    TResult Function(ApiFailure failure)? sptFailure,
   }) {
     return sptsLoaded?.call(sptList);
   }
@@ -807,7 +807,7 @@ class _$_SPTsLoaded implements _SPTsLoaded {
     TResult Function(SymbolPriceTicker spt)? sptLoaded,
     TResult Function(List<SymbolPriceTicker> sptList)? sptsLoaded,
     TResult Function()? sptLoading,
-    TResult Function(MarketDataFailure failure)? sptFailure,
+    TResult Function(ApiFailure failure)? sptFailure,
     required TResult orElse(),
   }) {
     if (sptsLoaded != null) {
@@ -912,7 +912,7 @@ class _$_SPTLoading implements _SPTLoading {
     required TResult Function(SymbolPriceTicker spt) sptLoaded,
     required TResult Function(List<SymbolPriceTicker> sptList) sptsLoaded,
     required TResult Function() sptLoading,
-    required TResult Function(MarketDataFailure failure) sptFailure,
+    required TResult Function(ApiFailure failure) sptFailure,
   }) {
     return sptLoading();
   }
@@ -924,7 +924,7 @@ class _$_SPTLoading implements _SPTLoading {
     TResult Function(SymbolPriceTicker spt)? sptLoaded,
     TResult Function(List<SymbolPriceTicker> sptList)? sptsLoaded,
     TResult Function()? sptLoading,
-    TResult Function(MarketDataFailure failure)? sptFailure,
+    TResult Function(ApiFailure failure)? sptFailure,
   }) {
     return sptLoading?.call();
   }
@@ -936,7 +936,7 @@ class _$_SPTLoading implements _SPTLoading {
     TResult Function(SymbolPriceTicker spt)? sptLoaded,
     TResult Function(List<SymbolPriceTicker> sptList)? sptsLoaded,
     TResult Function()? sptLoading,
-    TResult Function(MarketDataFailure failure)? sptFailure,
+    TResult Function(ApiFailure failure)? sptFailure,
     required TResult orElse(),
   }) {
     if (sptLoading != null) {
@@ -995,9 +995,9 @@ abstract class _$$_SPTFailureCopyWith<$Res> {
   factory _$$_SPTFailureCopyWith(
           _$_SPTFailure value, $Res Function(_$_SPTFailure) then) =
       __$$_SPTFailureCopyWithImpl<$Res>;
-  $Res call({MarketDataFailure failure});
+  $Res call({ApiFailure failure});
 
-  $MarketDataFailureCopyWith<$Res> get failure;
+  $ApiFailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
@@ -1019,13 +1019,13 @@ class __$$_SPTFailureCopyWithImpl<$Res>
       failure == freezed
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
-              as MarketDataFailure,
+              as ApiFailure,
     ));
   }
 
   @override
-  $MarketDataFailureCopyWith<$Res> get failure {
-    return $MarketDataFailureCopyWith<$Res>(_value.failure, (value) {
+  $ApiFailureCopyWith<$Res> get failure {
+    return $ApiFailureCopyWith<$Res>(_value.failure, (value) {
       return _then(_value.copyWith(failure: value));
     });
   }
@@ -1037,7 +1037,7 @@ class _$_SPTFailure implements _SPTFailure {
   const _$_SPTFailure(this.failure);
 
   @override
-  final MarketDataFailure failure;
+  final ApiFailure failure;
 
   @override
   String toString() {
@@ -1068,7 +1068,7 @@ class _$_SPTFailure implements _SPTFailure {
     required TResult Function(SymbolPriceTicker spt) sptLoaded,
     required TResult Function(List<SymbolPriceTicker> sptList) sptsLoaded,
     required TResult Function() sptLoading,
-    required TResult Function(MarketDataFailure failure) sptFailure,
+    required TResult Function(ApiFailure failure) sptFailure,
   }) {
     return sptFailure(failure);
   }
@@ -1080,7 +1080,7 @@ class _$_SPTFailure implements _SPTFailure {
     TResult Function(SymbolPriceTicker spt)? sptLoaded,
     TResult Function(List<SymbolPriceTicker> sptList)? sptsLoaded,
     TResult Function()? sptLoading,
-    TResult Function(MarketDataFailure failure)? sptFailure,
+    TResult Function(ApiFailure failure)? sptFailure,
   }) {
     return sptFailure?.call(failure);
   }
@@ -1092,7 +1092,7 @@ class _$_SPTFailure implements _SPTFailure {
     TResult Function(SymbolPriceTicker spt)? sptLoaded,
     TResult Function(List<SymbolPriceTicker> sptList)? sptsLoaded,
     TResult Function()? sptLoading,
-    TResult Function(MarketDataFailure failure)? sptFailure,
+    TResult Function(ApiFailure failure)? sptFailure,
     required TResult orElse(),
   }) {
     if (sptFailure != null) {
@@ -1143,9 +1143,9 @@ class _$_SPTFailure implements _SPTFailure {
 }
 
 abstract class _SPTFailure implements SymbolPriceTickerState {
-  const factory _SPTFailure(final MarketDataFailure failure) = _$_SPTFailure;
+  const factory _SPTFailure(final ApiFailure failure) = _$_SPTFailure;
 
-  MarketDataFailure get failure => throw _privateConstructorUsedError;
+  ApiFailure get failure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_SPTFailureCopyWith<_$_SPTFailure> get copyWith =>
       throw _privateConstructorUsedError;

@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
+import 'package:crypto_trader/domain/core/failures/api_failure.dart';
 import 'package:crypto_trader/domain/market_data/price_change_stats.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import '../../../domain/market_data/i_market_data_repository.dart';
-import '../../../domain/market_data/market_data_failure.dart';
 
 part 'price_change_stats_event.dart';
 part 'price_change_stats_state.dart';

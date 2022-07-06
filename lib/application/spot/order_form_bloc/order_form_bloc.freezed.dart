@@ -1263,7 +1263,7 @@ abstract class _Post implements OrderFormEvent {
 mixin _$OrderFormState {
   Order get order => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
-  Option<Either<SpotFailure, OrderResponse>>
+  Option<Either<ApiFailure, OrderResponse>>
       get postFailureOrSentOrderResponseOption =>
           throw _privateConstructorUsedError;
 
@@ -1280,7 +1280,7 @@ abstract class $OrderFormStateCopyWith<$Res> {
   $Res call(
       {Order order,
       bool isLoading,
-      Option<Either<SpotFailure, OrderResponse>>
+      Option<Either<ApiFailure, OrderResponse>>
           postFailureOrSentOrderResponseOption});
 
   $OrderCopyWith<$Res> get order;
@@ -1314,7 +1314,7 @@ class _$OrderFormStateCopyWithImpl<$Res>
               freezed
           ? _value.postFailureOrSentOrderResponseOption
           : postFailureOrSentOrderResponseOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<SpotFailure, OrderResponse>>,
+              as Option<Either<ApiFailure, OrderResponse>>,
     ));
   }
 
@@ -1336,7 +1336,7 @@ abstract class _$$_OrderFormStateCopyWith<$Res>
   $Res call(
       {Order order,
       bool isLoading,
-      Option<Either<SpotFailure, OrderResponse>>
+      Option<Either<ApiFailure, OrderResponse>>
           postFailureOrSentOrderResponseOption});
 
   @override
@@ -1373,7 +1373,7 @@ class __$$_OrderFormStateCopyWithImpl<$Res>
               freezed
           ? _value.postFailureOrSentOrderResponseOption
           : postFailureOrSentOrderResponseOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<SpotFailure, OrderResponse>>,
+              as Option<Either<ApiFailure, OrderResponse>>,
     ));
   }
 }
@@ -1391,7 +1391,7 @@ class _$_OrderFormState implements _OrderFormState {
   @override
   final bool isLoading;
   @override
-  final Option<Either<SpotFailure, OrderResponse>>
+  final Option<Either<ApiFailure, OrderResponse>>
       postFailureOrSentOrderResponseOption;
 
   @override
@@ -1429,7 +1429,7 @@ abstract class _OrderFormState implements OrderFormState {
   const factory _OrderFormState(
       {required final Order order,
       required final bool isLoading,
-      required final Option<Either<SpotFailure, OrderResponse>>
+      required final Option<Either<ApiFailure, OrderResponse>>
           postFailureOrSentOrderResponseOption}) = _$_OrderFormState;
 
   @override
@@ -1437,7 +1437,7 @@ abstract class _OrderFormState implements OrderFormState {
   @override
   bool get isLoading => throw _privateConstructorUsedError;
   @override
-  Option<Either<SpotFailure, OrderResponse>>
+  Option<Either<ApiFailure, OrderResponse>>
       get postFailureOrSentOrderResponseOption =>
           throw _privateConstructorUsedError;
   @override

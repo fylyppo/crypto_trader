@@ -230,7 +230,7 @@ mixin _$PriceChangeStatsState {
     required TResult Function() initial,
     required TResult Function(List<PriceChangeStats> pcsList) pcsLoaded,
     required TResult Function() pcsLoading,
-    required TResult Function(MarketDataFailure failure) pcsFailure,
+    required TResult Function(ApiFailure failure) pcsFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -238,7 +238,7 @@ mixin _$PriceChangeStatsState {
     TResult Function()? initial,
     TResult Function(List<PriceChangeStats> pcsList)? pcsLoaded,
     TResult Function()? pcsLoading,
-    TResult Function(MarketDataFailure failure)? pcsFailure,
+    TResult Function(ApiFailure failure)? pcsFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -246,7 +246,7 @@ mixin _$PriceChangeStatsState {
     TResult Function()? initial,
     TResult Function(List<PriceChangeStats> pcsList)? pcsLoaded,
     TResult Function()? pcsLoading,
-    TResult Function(MarketDataFailure failure)? pcsFailure,
+    TResult Function(ApiFailure failure)? pcsFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -337,7 +337,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function(List<PriceChangeStats> pcsList) pcsLoaded,
     required TResult Function() pcsLoading,
-    required TResult Function(MarketDataFailure failure) pcsFailure,
+    required TResult Function(ApiFailure failure) pcsFailure,
   }) {
     return initial();
   }
@@ -348,7 +348,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function(List<PriceChangeStats> pcsList)? pcsLoaded,
     TResult Function()? pcsLoading,
-    TResult Function(MarketDataFailure failure)? pcsFailure,
+    TResult Function(ApiFailure failure)? pcsFailure,
   }) {
     return initial?.call();
   }
@@ -359,7 +359,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function(List<PriceChangeStats> pcsList)? pcsLoaded,
     TResult Function()? pcsLoading,
-    TResult Function(MarketDataFailure failure)? pcsFailure,
+    TResult Function(ApiFailure failure)? pcsFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -482,7 +482,7 @@ class _$_PCSLoaded implements _PCSLoaded {
     required TResult Function() initial,
     required TResult Function(List<PriceChangeStats> pcsList) pcsLoaded,
     required TResult Function() pcsLoading,
-    required TResult Function(MarketDataFailure failure) pcsFailure,
+    required TResult Function(ApiFailure failure) pcsFailure,
   }) {
     return pcsLoaded(pcsList);
   }
@@ -493,7 +493,7 @@ class _$_PCSLoaded implements _PCSLoaded {
     TResult Function()? initial,
     TResult Function(List<PriceChangeStats> pcsList)? pcsLoaded,
     TResult Function()? pcsLoading,
-    TResult Function(MarketDataFailure failure)? pcsFailure,
+    TResult Function(ApiFailure failure)? pcsFailure,
   }) {
     return pcsLoaded?.call(pcsList);
   }
@@ -504,7 +504,7 @@ class _$_PCSLoaded implements _PCSLoaded {
     TResult Function()? initial,
     TResult Function(List<PriceChangeStats> pcsList)? pcsLoaded,
     TResult Function()? pcsLoading,
-    TResult Function(MarketDataFailure failure)? pcsFailure,
+    TResult Function(ApiFailure failure)? pcsFailure,
     required TResult orElse(),
   }) {
     if (pcsLoaded != null) {
@@ -604,7 +604,7 @@ class _$_PCSLoading implements _PCSLoading {
     required TResult Function() initial,
     required TResult Function(List<PriceChangeStats> pcsList) pcsLoaded,
     required TResult Function() pcsLoading,
-    required TResult Function(MarketDataFailure failure) pcsFailure,
+    required TResult Function(ApiFailure failure) pcsFailure,
   }) {
     return pcsLoading();
   }
@@ -615,7 +615,7 @@ class _$_PCSLoading implements _PCSLoading {
     TResult Function()? initial,
     TResult Function(List<PriceChangeStats> pcsList)? pcsLoaded,
     TResult Function()? pcsLoading,
-    TResult Function(MarketDataFailure failure)? pcsFailure,
+    TResult Function(ApiFailure failure)? pcsFailure,
   }) {
     return pcsLoading?.call();
   }
@@ -626,7 +626,7 @@ class _$_PCSLoading implements _PCSLoading {
     TResult Function()? initial,
     TResult Function(List<PriceChangeStats> pcsList)? pcsLoaded,
     TResult Function()? pcsLoading,
-    TResult Function(MarketDataFailure failure)? pcsFailure,
+    TResult Function(ApiFailure failure)? pcsFailure,
     required TResult orElse(),
   }) {
     if (pcsLoading != null) {
@@ -682,9 +682,9 @@ abstract class _$$_PCSFailureCopyWith<$Res> {
   factory _$$_PCSFailureCopyWith(
           _$_PCSFailure value, $Res Function(_$_PCSFailure) then) =
       __$$_PCSFailureCopyWithImpl<$Res>;
-  $Res call({MarketDataFailure failure});
+  $Res call({ApiFailure failure});
 
-  $MarketDataFailureCopyWith<$Res> get failure;
+  $ApiFailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
@@ -706,13 +706,13 @@ class __$$_PCSFailureCopyWithImpl<$Res>
       failure == freezed
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
-              as MarketDataFailure,
+              as ApiFailure,
     ));
   }
 
   @override
-  $MarketDataFailureCopyWith<$Res> get failure {
-    return $MarketDataFailureCopyWith<$Res>(_value.failure, (value) {
+  $ApiFailureCopyWith<$Res> get failure {
+    return $ApiFailureCopyWith<$Res>(_value.failure, (value) {
       return _then(_value.copyWith(failure: value));
     });
   }
@@ -724,7 +724,7 @@ class _$_PCSFailure implements _PCSFailure {
   const _$_PCSFailure(this.failure);
 
   @override
-  final MarketDataFailure failure;
+  final ApiFailure failure;
 
   @override
   String toString() {
@@ -754,7 +754,7 @@ class _$_PCSFailure implements _PCSFailure {
     required TResult Function() initial,
     required TResult Function(List<PriceChangeStats> pcsList) pcsLoaded,
     required TResult Function() pcsLoading,
-    required TResult Function(MarketDataFailure failure) pcsFailure,
+    required TResult Function(ApiFailure failure) pcsFailure,
   }) {
     return pcsFailure(failure);
   }
@@ -765,7 +765,7 @@ class _$_PCSFailure implements _PCSFailure {
     TResult Function()? initial,
     TResult Function(List<PriceChangeStats> pcsList)? pcsLoaded,
     TResult Function()? pcsLoading,
-    TResult Function(MarketDataFailure failure)? pcsFailure,
+    TResult Function(ApiFailure failure)? pcsFailure,
   }) {
     return pcsFailure?.call(failure);
   }
@@ -776,7 +776,7 @@ class _$_PCSFailure implements _PCSFailure {
     TResult Function()? initial,
     TResult Function(List<PriceChangeStats> pcsList)? pcsLoaded,
     TResult Function()? pcsLoading,
-    TResult Function(MarketDataFailure failure)? pcsFailure,
+    TResult Function(ApiFailure failure)? pcsFailure,
     required TResult orElse(),
   }) {
     if (pcsFailure != null) {
@@ -824,9 +824,9 @@ class _$_PCSFailure implements _PCSFailure {
 }
 
 abstract class _PCSFailure implements PriceChangeStatsState {
-  const factory _PCSFailure(final MarketDataFailure failure) = _$_PCSFailure;
+  const factory _PCSFailure(final ApiFailure failure) = _$_PCSFailure;
 
-  MarketDataFailure get failure => throw _privateConstructorUsedError;
+  ApiFailure get failure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_PCSFailureCopyWith<_$_PCSFailure> get copyWith =>
       throw _privateConstructorUsedError;

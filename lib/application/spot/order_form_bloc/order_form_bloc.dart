@@ -4,8 +4,8 @@ import 'package:crypto_trader/domain/spot/order_response.dart';
 import 'package:dartz/dartz.dart' hide Order;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import '../../../domain/core/failures/api_failure.dart';
 import '../../../domain/spot/order.dart';
-import '../../../domain/spot/spot_failure.dart';
 
 part 'order_form_event.dart';
 part 'order_form_state.dart';

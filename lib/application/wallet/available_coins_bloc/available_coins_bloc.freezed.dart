@@ -174,7 +174,7 @@ mixin _$AvailableCoinsState {
     required TResult Function(List<AvailableCoin> availableCoins)
         availableCoinsLoaded,
     required TResult Function() availableCoinsLoading,
-    required TResult Function(WalletFailure failure) availableCoinsFailure,
+    required TResult Function(ApiFailure failure) availableCoinsFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -182,7 +182,7 @@ mixin _$AvailableCoinsState {
     TResult Function()? initial,
     TResult Function(List<AvailableCoin> availableCoins)? availableCoinsLoaded,
     TResult Function()? availableCoinsLoading,
-    TResult Function(WalletFailure failure)? availableCoinsFailure,
+    TResult Function(ApiFailure failure)? availableCoinsFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -190,7 +190,7 @@ mixin _$AvailableCoinsState {
     TResult Function()? initial,
     TResult Function(List<AvailableCoin> availableCoins)? availableCoinsLoaded,
     TResult Function()? availableCoinsLoading,
-    TResult Function(WalletFailure failure)? availableCoinsFailure,
+    TResult Function(ApiFailure failure)? availableCoinsFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -284,7 +284,7 @@ class _$_Initial implements _Initial {
     required TResult Function(List<AvailableCoin> availableCoins)
         availableCoinsLoaded,
     required TResult Function() availableCoinsLoading,
-    required TResult Function(WalletFailure failure) availableCoinsFailure,
+    required TResult Function(ApiFailure failure) availableCoinsFailure,
   }) {
     return initial();
   }
@@ -295,7 +295,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function(List<AvailableCoin> availableCoins)? availableCoinsLoaded,
     TResult Function()? availableCoinsLoading,
-    TResult Function(WalletFailure failure)? availableCoinsFailure,
+    TResult Function(ApiFailure failure)? availableCoinsFailure,
   }) {
     return initial?.call();
   }
@@ -306,7 +306,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function(List<AvailableCoin> availableCoins)? availableCoinsLoaded,
     TResult Function()? availableCoinsLoading,
-    TResult Function(WalletFailure failure)? availableCoinsFailure,
+    TResult Function(ApiFailure failure)? availableCoinsFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -435,7 +435,7 @@ class _$_AvailableCoinsLoaded implements _AvailableCoinsLoaded {
     required TResult Function(List<AvailableCoin> availableCoins)
         availableCoinsLoaded,
     required TResult Function() availableCoinsLoading,
-    required TResult Function(WalletFailure failure) availableCoinsFailure,
+    required TResult Function(ApiFailure failure) availableCoinsFailure,
   }) {
     return availableCoinsLoaded(availableCoins);
   }
@@ -446,7 +446,7 @@ class _$_AvailableCoinsLoaded implements _AvailableCoinsLoaded {
     TResult Function()? initial,
     TResult Function(List<AvailableCoin> availableCoins)? availableCoinsLoaded,
     TResult Function()? availableCoinsLoading,
-    TResult Function(WalletFailure failure)? availableCoinsFailure,
+    TResult Function(ApiFailure failure)? availableCoinsFailure,
   }) {
     return availableCoinsLoaded?.call(availableCoins);
   }
@@ -457,7 +457,7 @@ class _$_AvailableCoinsLoaded implements _AvailableCoinsLoaded {
     TResult Function()? initial,
     TResult Function(List<AvailableCoin> availableCoins)? availableCoinsLoaded,
     TResult Function()? availableCoinsLoading,
-    TResult Function(WalletFailure failure)? availableCoinsFailure,
+    TResult Function(ApiFailure failure)? availableCoinsFailure,
     required TResult orElse(),
   }) {
     if (availableCoinsLoaded != null) {
@@ -562,7 +562,7 @@ class _$_AvailableCoinsLoading implements _AvailableCoinsLoading {
     required TResult Function(List<AvailableCoin> availableCoins)
         availableCoinsLoaded,
     required TResult Function() availableCoinsLoading,
-    required TResult Function(WalletFailure failure) availableCoinsFailure,
+    required TResult Function(ApiFailure failure) availableCoinsFailure,
   }) {
     return availableCoinsLoading();
   }
@@ -573,7 +573,7 @@ class _$_AvailableCoinsLoading implements _AvailableCoinsLoading {
     TResult Function()? initial,
     TResult Function(List<AvailableCoin> availableCoins)? availableCoinsLoaded,
     TResult Function()? availableCoinsLoading,
-    TResult Function(WalletFailure failure)? availableCoinsFailure,
+    TResult Function(ApiFailure failure)? availableCoinsFailure,
   }) {
     return availableCoinsLoading?.call();
   }
@@ -584,7 +584,7 @@ class _$_AvailableCoinsLoading implements _AvailableCoinsLoading {
     TResult Function()? initial,
     TResult Function(List<AvailableCoin> availableCoins)? availableCoinsLoaded,
     TResult Function()? availableCoinsLoading,
-    TResult Function(WalletFailure failure)? availableCoinsFailure,
+    TResult Function(ApiFailure failure)? availableCoinsFailure,
     required TResult orElse(),
   }) {
     if (availableCoinsLoading != null) {
@@ -642,9 +642,9 @@ abstract class _$$_AvailableCoinsFailureCopyWith<$Res> {
   factory _$$_AvailableCoinsFailureCopyWith(_$_AvailableCoinsFailure value,
           $Res Function(_$_AvailableCoinsFailure) then) =
       __$$_AvailableCoinsFailureCopyWithImpl<$Res>;
-  $Res call({WalletFailure failure});
+  $Res call({ApiFailure failure});
 
-  $WalletFailureCopyWith<$Res> get failure;
+  $ApiFailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
@@ -667,13 +667,13 @@ class __$$_AvailableCoinsFailureCopyWithImpl<$Res>
       failure == freezed
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
-              as WalletFailure,
+              as ApiFailure,
     ));
   }
 
   @override
-  $WalletFailureCopyWith<$Res> get failure {
-    return $WalletFailureCopyWith<$Res>(_value.failure, (value) {
+  $ApiFailureCopyWith<$Res> get failure {
+    return $ApiFailureCopyWith<$Res>(_value.failure, (value) {
       return _then(_value.copyWith(failure: value));
     });
   }
@@ -685,7 +685,7 @@ class _$_AvailableCoinsFailure implements _AvailableCoinsFailure {
   const _$_AvailableCoinsFailure(this.failure);
 
   @override
-  final WalletFailure failure;
+  final ApiFailure failure;
 
   @override
   String toString() {
@@ -717,7 +717,7 @@ class _$_AvailableCoinsFailure implements _AvailableCoinsFailure {
     required TResult Function(List<AvailableCoin> availableCoins)
         availableCoinsLoaded,
     required TResult Function() availableCoinsLoading,
-    required TResult Function(WalletFailure failure) availableCoinsFailure,
+    required TResult Function(ApiFailure failure) availableCoinsFailure,
   }) {
     return availableCoinsFailure(failure);
   }
@@ -728,7 +728,7 @@ class _$_AvailableCoinsFailure implements _AvailableCoinsFailure {
     TResult Function()? initial,
     TResult Function(List<AvailableCoin> availableCoins)? availableCoinsLoaded,
     TResult Function()? availableCoinsLoading,
-    TResult Function(WalletFailure failure)? availableCoinsFailure,
+    TResult Function(ApiFailure failure)? availableCoinsFailure,
   }) {
     return availableCoinsFailure?.call(failure);
   }
@@ -739,7 +739,7 @@ class _$_AvailableCoinsFailure implements _AvailableCoinsFailure {
     TResult Function()? initial,
     TResult Function(List<AvailableCoin> availableCoins)? availableCoinsLoaded,
     TResult Function()? availableCoinsLoading,
-    TResult Function(WalletFailure failure)? availableCoinsFailure,
+    TResult Function(ApiFailure failure)? availableCoinsFailure,
     required TResult orElse(),
   }) {
     if (availableCoinsFailure != null) {
@@ -789,10 +789,10 @@ class _$_AvailableCoinsFailure implements _AvailableCoinsFailure {
 }
 
 abstract class _AvailableCoinsFailure implements AvailableCoinsState {
-  const factory _AvailableCoinsFailure(final WalletFailure failure) =
+  const factory _AvailableCoinsFailure(final ApiFailure failure) =
       _$_AvailableCoinsFailure;
 
-  WalletFailure get failure => throw _privateConstructorUsedError;
+  ApiFailure get failure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_AvailableCoinsFailureCopyWith<_$_AvailableCoinsFailure> get copyWith =>
       throw _privateConstructorUsedError;

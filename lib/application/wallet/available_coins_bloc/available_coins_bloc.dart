@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:crypto_trader/domain/wallet/available_coin.dart';
 import 'package:crypto_trader/domain/wallet/i_wallet_repository.dart';
-import 'package:crypto_trader/domain/wallet/wallet_failure.dart';
+import 'package:crypto_trader/domain/core/failures/api_failure.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 

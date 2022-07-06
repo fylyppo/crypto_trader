@@ -1,7 +1,7 @@
 import 'package:crypto_trader/domain/wallet/available_coin.dart';
 import 'package:dartz/dartz.dart';
-import 'wallet_failure.dart';
+import '../core/failures/api_failure.dart';
 
 abstract class IWalletRepository {
-  Future<Either<WalletFailure, List<AvailableCoin>>> getAvailableCoins();
+  Future<Either<ApiFailure, List<AvailableCoin>>> getAvailableCoins();
 }
