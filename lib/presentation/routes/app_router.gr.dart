@@ -13,6 +13,8 @@
 import 'package:auto_route/auto_route.dart' as _i10;
 import 'package:flutter/material.dart' as _i11;
 
+import '../../application/wallet/available_coins_bloc/available_coins_bloc.dart'
+    as _i13;
 import '../home/home_page.dart' as _i6;
 import '../last_trades/last_trades_page.dart' as _i9;
 import '../main/main_page.dart' as _i2;
@@ -55,14 +57,19 @@ class AppRouter extends _i10.RootStackRouter {
           child: _i10.WrappedRoute(child: const _i4.SignUpPage()));
     },
     SpotTradeRoute.name: (routeData) {
+      final args = routeData.argsAs<SpotTradeRouteArgs>();
       return _i10.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i10.WrappedRoute(child: const _i5.SpotTradePage()));
+          child: _i10.WrappedRoute(
+              child: _i5.SpotTradePage(
+                  key: args.key, availableCoinsBloc: args.availableCoinsBloc)));
     },
     HomeRoute.name: (routeData) {
+      final args =
+          routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
       return _i10.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i10.WrappedRoute(child: const _i6.HomePage()));
+          child: _i10.WrappedRoute(child: _i6.HomePage(key: args.key)));
     },
     SymbolPriceTickerRoute.name: (routeData) {
       return _i10.MaterialPageX<dynamic>(
@@ -157,18 +164,48 @@ class SignUpRoute extends _i10.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.SpotTradePage]
-class SpotTradeRoute extends _i10.PageRouteInfo<void> {
-  const SpotTradeRoute() : super(SpotTradeRoute.name, path: '/spot-trade-page');
+class SpotTradeRoute extends _i10.PageRouteInfo<SpotTradeRouteArgs> {
+  SpotTradeRoute(
+      {_i11.Key? key, required _i13.AvailableCoinsBloc availableCoinsBloc})
+      : super(SpotTradeRoute.name,
+            path: '/spot-trade-page',
+            args: SpotTradeRouteArgs(
+                key: key, availableCoinsBloc: availableCoinsBloc));
 
   static const String name = 'SpotTradeRoute';
 }
 
+class SpotTradeRouteArgs {
+  const SpotTradeRouteArgs({this.key, required this.availableCoinsBloc});
+
+  final _i11.Key? key;
+
+  final _i13.AvailableCoinsBloc availableCoinsBloc;
+
+  @override
+  String toString() {
+    return 'SpotTradeRouteArgs{key: $key, availableCoinsBloc: $availableCoinsBloc}';
+  }
+}
+
 /// generated route for
 /// [_i6.HomePage]
-class HomeRoute extends _i10.PageRouteInfo<void> {
-  const HomeRoute() : super(HomeRoute.name, path: 'home');
+class HomeRoute extends _i10.PageRouteInfo<HomeRouteArgs> {
+  HomeRoute({_i11.Key? key})
+      : super(HomeRoute.name, path: 'home', args: HomeRouteArgs(key: key));
 
   static const String name = 'HomeRoute';
+}
+
+class HomeRouteArgs {
+  const HomeRouteArgs({this.key});
+
+  final _i11.Key? key;
+
+  @override
+  String toString() {
+    return 'HomeRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for

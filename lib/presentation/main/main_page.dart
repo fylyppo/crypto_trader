@@ -8,11 +8,11 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter.pageView(
-        routes: const [
+        routes: [
           HomeRoute(),
-          SymbolPriceTickerRoute(),
-          PriceChangeStatsRoute(),
-          LastTradesRoute()
+          const SymbolPriceTickerRoute(),
+          const PriceChangeStatsRoute(),
+          const LastTradesRoute()
         ],
         builder: (context, child, _) {
           final tabsRouter = AutoTabsRouter.of(context);
