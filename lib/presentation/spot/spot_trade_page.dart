@@ -16,24 +16,18 @@ class SpotTradePage extends StatelessWidget implements AutoRouteWrapper {
       appBar: AppBar(
         title: Text('spot trade'),
       ),
-      body: Column(
-        children: [
-          BlocBuilder<AvailableCoinsBloc, AvailableCoinsState>(
-            builder: (context, state) {
-              return state.map(
-                initial: (_) => const Text('init'),
-                 availableCoinsLoaded: (value) => ListView.builder(
-                itemCount: value.availableCoins.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    color: Colors.blue,
-                    child: Text(value.availableCoins[index].coin),);
-                }),
-                  availableCoinsLoading: (_) => const CircularProgressIndicator(),
-                   availableCoinsFailure: (_) => Text('failure'));
-            },
-          ),
-        ],
+      body: BlocBuilder<AvailableCoinsBloc, AvailableCoinsState>(
+        builder: (context, state) {
+          return state.map(
+            initial: (_) => const Text('init'),
+             availableCoinsLoaded: (value) => ListView.builder(
+            itemCount: value.availableCoins.length,
+            itemBuilder: (context, index) {
+              return Text(value.availableCoins[index].coin);
+            }),
+              availableCoinsLoading: (_) => const CircularProgressIndicator(),
+               availableCoinsFailure: (_) => Text('failure'));
+        },
       ),
     );
   }

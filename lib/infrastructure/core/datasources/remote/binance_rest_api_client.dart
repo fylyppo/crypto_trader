@@ -22,7 +22,7 @@ abstract class BinanceRestApiClient {
   Future<List<PriceChangeStats>> getPriceChangeStats(@Query("symbols") String symbols,);
 
   @GET("/sapi/v1/capital/config/getall")
-  Future<List<AvailableCoin>> getAllCoinsInformation(@Query("timestamp") String timestamp);
+  Future<List<AvailableCoin>> getAllCoinsInformation(@Query("timestamp") String timestamp, @Query("signature") String signature);
 
   @POST("/api/v3/order")
   Future<OrderResponseDto> postNewTradeOrder(@Body() OrderDto order);

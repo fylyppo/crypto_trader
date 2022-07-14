@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:crypto_trader/domain/core/requests/sign_an_endpoint.dart';
 import 'package:crypto_trader/domain/wallet/available_coin.dart';
 import 'package:crypto_trader/domain/wallet/i_wallet_repository.dart';
 import 'package:crypto_trader/domain/core/failures/api_failure.dart';
@@ -18,7 +19,8 @@ class WalletRepository implements IWalletRepository {
   @override
   Future<Either<ApiFailure, List<AvailableCoin>>> getAvailableCoins() async {
     final String timestamp = jsonEncode(DateTime.now().millisecondsSinceEpoch);
+    final String signature = signAnEndpoint(timestamp);
     return performRequest<List<AvailableCoin>>(
-        () => client.getAllCoinsInformation(timestamp));
+        () => client.getAllCoinsInformation(timestamp, signature));
   }
 }

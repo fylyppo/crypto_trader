@@ -72,9 +72,13 @@ class _BinanceRestApiClient implements BinanceRestApiClient {
   }
 
   @override
-  Future<List<AvailableCoin>> getAllCoinsInformation(timestamp) async {
+  Future<List<AvailableCoin>> getAllCoinsInformation(
+      timestamp, signature) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'timestamp': timestamp};
+    final queryParameters = <String, dynamic>{
+      r'timestamp': timestamp,
+      r'signature': signature
+    };
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(

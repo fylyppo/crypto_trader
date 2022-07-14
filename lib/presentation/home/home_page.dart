@@ -16,12 +16,19 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
     return Scaffold(
         body: BlocBuilder<AvailableCoinsBloc, AvailableCoinsState>(
           builder: (context, state) {
-            return const Center(child: Text('home'));
+            return state.map(
+                initial: (_) => const Text('init'),
+                availableCoinsLoaded: (value) {
+                  return const Text('loaded');
+                },
+                availableCoinsLoading: (_) => const Text('loading'),
+                availableCoinsFailure: (_) => const Text('fail'));
           },
         ),
         floatingActionButton: FloatingActionButton(
             child: const Icon(Icons.currency_exchange),
-            onPressed: () => getIt<AppRouter>().push(SpotTradeRoute(availableCoinsBloc: availableCoinsBloc))));
+            onPressed: () => getIt<AppRouter>()
+                .push(SpotTradeRoute(availableCoinsBloc: availableCoinsBloc))));
   }
 
   @override

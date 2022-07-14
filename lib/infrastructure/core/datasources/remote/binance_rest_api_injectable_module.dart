@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 @module
 abstract class BinanceRestApiInjectableModule {
   @lazySingleton
-  Dio get dio => Dio();
+  Dio get dio => Dio()..options.headers['X-MBX-APIKEY'] = 'xxxx';
   @lazySingleton
   BinanceRestApiClient get binanceRestApiClient => BinanceRestApiClient(dio);
 }
