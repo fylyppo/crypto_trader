@@ -171,7 +171,8 @@ mixin _$AvailableCoinsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<AvailableCoin> availableCoins)
+    required TResult Function(List<AvailableCoin> availableCoins,
+            List<AvailableCoin> availableCoinsInUserWallet)
         availableCoinsLoaded,
     required TResult Function() availableCoinsLoading,
     required TResult Function(ApiFailure failure) availableCoinsFailure,
@@ -180,7 +181,9 @@ mixin _$AvailableCoinsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<AvailableCoin> availableCoins)? availableCoinsLoaded,
+    TResult Function(List<AvailableCoin> availableCoins,
+            List<AvailableCoin> availableCoinsInUserWallet)?
+        availableCoinsLoaded,
     TResult Function()? availableCoinsLoading,
     TResult Function(ApiFailure failure)? availableCoinsFailure,
   }) =>
@@ -188,7 +191,9 @@ mixin _$AvailableCoinsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<AvailableCoin> availableCoins)? availableCoinsLoaded,
+    TResult Function(List<AvailableCoin> availableCoins,
+            List<AvailableCoin> availableCoinsInUserWallet)?
+        availableCoinsLoaded,
     TResult Function()? availableCoinsLoading,
     TResult Function(ApiFailure failure)? availableCoinsFailure,
     required TResult orElse(),
@@ -281,7 +286,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<AvailableCoin> availableCoins)
+    required TResult Function(List<AvailableCoin> availableCoins,
+            List<AvailableCoin> availableCoinsInUserWallet)
         availableCoinsLoaded,
     required TResult Function() availableCoinsLoading,
     required TResult Function(ApiFailure failure) availableCoinsFailure,
@@ -293,7 +299,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<AvailableCoin> availableCoins)? availableCoinsLoaded,
+    TResult Function(List<AvailableCoin> availableCoins,
+            List<AvailableCoin> availableCoinsInUserWallet)?
+        availableCoinsLoaded,
     TResult Function()? availableCoinsLoading,
     TResult Function(ApiFailure failure)? availableCoinsFailure,
   }) {
@@ -304,7 +312,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<AvailableCoin> availableCoins)? availableCoinsLoaded,
+    TResult Function(List<AvailableCoin> availableCoins,
+            List<AvailableCoin> availableCoinsInUserWallet)?
+        availableCoinsLoaded,
     TResult Function()? availableCoinsLoading,
     TResult Function(ApiFailure failure)? availableCoinsFailure,
     required TResult orElse(),
@@ -364,7 +374,9 @@ abstract class _$$_AvailableCoinsLoadedCopyWith<$Res> {
   factory _$$_AvailableCoinsLoadedCopyWith(_$_AvailableCoinsLoaded value,
           $Res Function(_$_AvailableCoinsLoaded) then) =
       __$$_AvailableCoinsLoadedCopyWithImpl<$Res>;
-  $Res call({List<AvailableCoin> availableCoins});
+  $Res call(
+      {List<AvailableCoin> availableCoins,
+      List<AvailableCoin> availableCoinsInUserWallet});
 }
 
 /// @nodoc
@@ -381,11 +393,16 @@ class __$$_AvailableCoinsLoadedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? availableCoins = freezed,
+    Object? availableCoinsInUserWallet = freezed,
   }) {
     return _then(_$_AvailableCoinsLoaded(
-      availableCoins == freezed
+      availableCoins: availableCoins == freezed
           ? _value._availableCoins
           : availableCoins // ignore: cast_nullable_to_non_nullable
+              as List<AvailableCoin>,
+      availableCoinsInUserWallet: availableCoinsInUserWallet == freezed
+          ? _value._availableCoinsInUserWallet
+          : availableCoinsInUserWallet // ignore: cast_nullable_to_non_nullable
               as List<AvailableCoin>,
     ));
   }
@@ -394,8 +411,11 @@ class __$$_AvailableCoinsLoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AvailableCoinsLoaded implements _AvailableCoinsLoaded {
-  const _$_AvailableCoinsLoaded(final List<AvailableCoin> availableCoins)
-      : _availableCoins = availableCoins;
+  const _$_AvailableCoinsLoaded(
+      {required final List<AvailableCoin> availableCoins,
+      required final List<AvailableCoin> availableCoinsInUserWallet})
+      : _availableCoins = availableCoins,
+        _availableCoinsInUserWallet = availableCoinsInUserWallet;
 
   final List<AvailableCoin> _availableCoins;
   @override
@@ -404,9 +424,16 @@ class _$_AvailableCoinsLoaded implements _AvailableCoinsLoaded {
     return EqualUnmodifiableListView(_availableCoins);
   }
 
+  final List<AvailableCoin> _availableCoinsInUserWallet;
+  @override
+  List<AvailableCoin> get availableCoinsInUserWallet {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_availableCoinsInUserWallet);
+  }
+
   @override
   String toString() {
-    return 'AvailableCoinsState.availableCoinsLoaded(availableCoins: $availableCoins)';
+    return 'AvailableCoinsState.availableCoinsLoaded(availableCoins: $availableCoins, availableCoinsInUserWallet: $availableCoinsInUserWallet)';
   }
 
   @override
@@ -415,12 +442,17 @@ class _$_AvailableCoinsLoaded implements _AvailableCoinsLoaded {
         (other.runtimeType == runtimeType &&
             other is _$_AvailableCoinsLoaded &&
             const DeepCollectionEquality()
-                .equals(other._availableCoins, _availableCoins));
+                .equals(other._availableCoins, _availableCoins) &&
+            const DeepCollectionEquality().equals(
+                other._availableCoinsInUserWallet,
+                _availableCoinsInUserWallet));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_availableCoins));
+      runtimeType,
+      const DeepCollectionEquality().hash(_availableCoins),
+      const DeepCollectionEquality().hash(_availableCoinsInUserWallet));
 
   @JsonKey(ignore: true)
   @override
@@ -432,36 +464,42 @@ class _$_AvailableCoinsLoaded implements _AvailableCoinsLoaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<AvailableCoin> availableCoins)
+    required TResult Function(List<AvailableCoin> availableCoins,
+            List<AvailableCoin> availableCoinsInUserWallet)
         availableCoinsLoaded,
     required TResult Function() availableCoinsLoading,
     required TResult Function(ApiFailure failure) availableCoinsFailure,
   }) {
-    return availableCoinsLoaded(availableCoins);
+    return availableCoinsLoaded(availableCoins, availableCoinsInUserWallet);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<AvailableCoin> availableCoins)? availableCoinsLoaded,
+    TResult Function(List<AvailableCoin> availableCoins,
+            List<AvailableCoin> availableCoinsInUserWallet)?
+        availableCoinsLoaded,
     TResult Function()? availableCoinsLoading,
     TResult Function(ApiFailure failure)? availableCoinsFailure,
   }) {
-    return availableCoinsLoaded?.call(availableCoins);
+    return availableCoinsLoaded?.call(
+        availableCoins, availableCoinsInUserWallet);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<AvailableCoin> availableCoins)? availableCoinsLoaded,
+    TResult Function(List<AvailableCoin> availableCoins,
+            List<AvailableCoin> availableCoinsInUserWallet)?
+        availableCoinsLoaded,
     TResult Function()? availableCoinsLoading,
     TResult Function(ApiFailure failure)? availableCoinsFailure,
     required TResult orElse(),
   }) {
     if (availableCoinsLoaded != null) {
-      return availableCoinsLoaded(availableCoins);
+      return availableCoinsLoaded(availableCoins, availableCoinsInUserWallet);
     }
     return orElse();
   }
@@ -508,9 +546,13 @@ class _$_AvailableCoinsLoaded implements _AvailableCoinsLoaded {
 
 abstract class _AvailableCoinsLoaded implements AvailableCoinsState {
   const factory _AvailableCoinsLoaded(
-      final List<AvailableCoin> availableCoins) = _$_AvailableCoinsLoaded;
+          {required final List<AvailableCoin> availableCoins,
+          required final List<AvailableCoin> availableCoinsInUserWallet}) =
+      _$_AvailableCoinsLoaded;
 
   List<AvailableCoin> get availableCoins => throw _privateConstructorUsedError;
+  List<AvailableCoin> get availableCoinsInUserWallet =>
+      throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_AvailableCoinsLoadedCopyWith<_$_AvailableCoinsLoaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -559,7 +601,8 @@ class _$_AvailableCoinsLoading implements _AvailableCoinsLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<AvailableCoin> availableCoins)
+    required TResult Function(List<AvailableCoin> availableCoins,
+            List<AvailableCoin> availableCoinsInUserWallet)
         availableCoinsLoaded,
     required TResult Function() availableCoinsLoading,
     required TResult Function(ApiFailure failure) availableCoinsFailure,
@@ -571,7 +614,9 @@ class _$_AvailableCoinsLoading implements _AvailableCoinsLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<AvailableCoin> availableCoins)? availableCoinsLoaded,
+    TResult Function(List<AvailableCoin> availableCoins,
+            List<AvailableCoin> availableCoinsInUserWallet)?
+        availableCoinsLoaded,
     TResult Function()? availableCoinsLoading,
     TResult Function(ApiFailure failure)? availableCoinsFailure,
   }) {
@@ -582,7 +627,9 @@ class _$_AvailableCoinsLoading implements _AvailableCoinsLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<AvailableCoin> availableCoins)? availableCoinsLoaded,
+    TResult Function(List<AvailableCoin> availableCoins,
+            List<AvailableCoin> availableCoinsInUserWallet)?
+        availableCoinsLoaded,
     TResult Function()? availableCoinsLoading,
     TResult Function(ApiFailure failure)? availableCoinsFailure,
     required TResult orElse(),
@@ -714,7 +761,8 @@ class _$_AvailableCoinsFailure implements _AvailableCoinsFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<AvailableCoin> availableCoins)
+    required TResult Function(List<AvailableCoin> availableCoins,
+            List<AvailableCoin> availableCoinsInUserWallet)
         availableCoinsLoaded,
     required TResult Function() availableCoinsLoading,
     required TResult Function(ApiFailure failure) availableCoinsFailure,
@@ -726,7 +774,9 @@ class _$_AvailableCoinsFailure implements _AvailableCoinsFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<AvailableCoin> availableCoins)? availableCoinsLoaded,
+    TResult Function(List<AvailableCoin> availableCoins,
+            List<AvailableCoin> availableCoinsInUserWallet)?
+        availableCoinsLoaded,
     TResult Function()? availableCoinsLoading,
     TResult Function(ApiFailure failure)? availableCoinsFailure,
   }) {
@@ -737,7 +787,9 @@ class _$_AvailableCoinsFailure implements _AvailableCoinsFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<AvailableCoin> availableCoins)? availableCoinsLoaded,
+    TResult Function(List<AvailableCoin> availableCoins,
+            List<AvailableCoin> availableCoinsInUserWallet)?
+        availableCoinsLoaded,
     TResult Function()? availableCoinsLoading,
     TResult Function(ApiFailure failure)? availableCoinsFailure,
     required TResult orElse(),

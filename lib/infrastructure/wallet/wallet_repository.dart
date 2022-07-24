@@ -21,12 +21,7 @@ class WalletRepository implements IWalletRepository {
     final String timestamp = jsonEncode(DateTime.now().millisecondsSinceEpoch);
     final String signature = signAnEndpoint(timestamp);
 
-    final Either<ApiFailure, List<AvailableCoin>> allAvailableCoinsOrFailure =
-        await performRequest<List<AvailableCoin>>(
-            () => client.getAllCoinsInformation(timestamp, signature));
-
-    return allAvailableCoinsOrFailure.fold((l) => Left(l), (allAvailableCoins) {
-      return Right(allAvailableCoins.where((AvailableCoin availableCoin) => double.parse(availableCoin.free) != 0).toList());
-    });
+    return await performRequest<List<AvailableCoin>>(
+        () => client.getAllCoinsInformation(timestamp, signature));
   }
 }
