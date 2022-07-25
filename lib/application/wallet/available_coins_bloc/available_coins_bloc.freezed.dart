@@ -202,7 +202,7 @@ mixin _$AvailableCoinsState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_AvailableCoinsLoaded value) availableCoinsLoaded,
+    required TResult Function(AvailableCoinsLoaded value) availableCoinsLoaded,
     required TResult Function(_AvailableCoinsLoading value)
         availableCoinsLoading,
     required TResult Function(_AvailableCoinsFailure value)
@@ -212,7 +212,7 @@ mixin _$AvailableCoinsState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_AvailableCoinsLoaded value)? availableCoinsLoaded,
+    TResult Function(AvailableCoinsLoaded value)? availableCoinsLoaded,
     TResult Function(_AvailableCoinsLoading value)? availableCoinsLoading,
     TResult Function(_AvailableCoinsFailure value)? availableCoinsFailure,
   }) =>
@@ -220,7 +220,7 @@ mixin _$AvailableCoinsState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_AvailableCoinsLoaded value)? availableCoinsLoaded,
+    TResult Function(AvailableCoinsLoaded value)? availableCoinsLoaded,
     TResult Function(_AvailableCoinsLoading value)? availableCoinsLoading,
     TResult Function(_AvailableCoinsFailure value)? availableCoinsFailure,
     required TResult orElse(),
@@ -329,7 +329,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_AvailableCoinsLoaded value) availableCoinsLoaded,
+    required TResult Function(AvailableCoinsLoaded value) availableCoinsLoaded,
     required TResult Function(_AvailableCoinsLoading value)
         availableCoinsLoading,
     required TResult Function(_AvailableCoinsFailure value)
@@ -342,7 +342,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_AvailableCoinsLoaded value)? availableCoinsLoaded,
+    TResult Function(AvailableCoinsLoaded value)? availableCoinsLoaded,
     TResult Function(_AvailableCoinsLoading value)? availableCoinsLoading,
     TResult Function(_AvailableCoinsFailure value)? availableCoinsFailure,
   }) {
@@ -353,7 +353,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_AvailableCoinsLoaded value)? availableCoinsLoaded,
+    TResult Function(AvailableCoinsLoaded value)? availableCoinsLoaded,
     TResult Function(_AvailableCoinsLoading value)? availableCoinsLoading,
     TResult Function(_AvailableCoinsFailure value)? availableCoinsFailure,
     required TResult orElse(),
@@ -370,32 +370,32 @@ abstract class _Initial implements AvailableCoinsState {
 }
 
 /// @nodoc
-abstract class _$$_AvailableCoinsLoadedCopyWith<$Res> {
-  factory _$$_AvailableCoinsLoadedCopyWith(_$_AvailableCoinsLoaded value,
-          $Res Function(_$_AvailableCoinsLoaded) then) =
-      __$$_AvailableCoinsLoadedCopyWithImpl<$Res>;
+abstract class _$$AvailableCoinsLoadedCopyWith<$Res> {
+  factory _$$AvailableCoinsLoadedCopyWith(_$AvailableCoinsLoaded value,
+          $Res Function(_$AvailableCoinsLoaded) then) =
+      __$$AvailableCoinsLoadedCopyWithImpl<$Res>;
   $Res call(
       {List<AvailableCoin> availableCoins,
       List<AvailableCoin> availableCoinsInUserWallet});
 }
 
 /// @nodoc
-class __$$_AvailableCoinsLoadedCopyWithImpl<$Res>
+class __$$AvailableCoinsLoadedCopyWithImpl<$Res>
     extends _$AvailableCoinsStateCopyWithImpl<$Res>
-    implements _$$_AvailableCoinsLoadedCopyWith<$Res> {
-  __$$_AvailableCoinsLoadedCopyWithImpl(_$_AvailableCoinsLoaded _value,
-      $Res Function(_$_AvailableCoinsLoaded) _then)
-      : super(_value, (v) => _then(v as _$_AvailableCoinsLoaded));
+    implements _$$AvailableCoinsLoadedCopyWith<$Res> {
+  __$$AvailableCoinsLoadedCopyWithImpl(_$AvailableCoinsLoaded _value,
+      $Res Function(_$AvailableCoinsLoaded) _then)
+      : super(_value, (v) => _then(v as _$AvailableCoinsLoaded));
 
   @override
-  _$_AvailableCoinsLoaded get _value => super._value as _$_AvailableCoinsLoaded;
+  _$AvailableCoinsLoaded get _value => super._value as _$AvailableCoinsLoaded;
 
   @override
   $Res call({
     Object? availableCoins = freezed,
     Object? availableCoinsInUserWallet = freezed,
   }) {
-    return _then(_$_AvailableCoinsLoaded(
+    return _then(_$AvailableCoinsLoaded(
       availableCoins: availableCoins == freezed
           ? _value._availableCoins
           : availableCoins // ignore: cast_nullable_to_non_nullable
@@ -410,8 +410,8 @@ class __$$_AvailableCoinsLoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AvailableCoinsLoaded implements _AvailableCoinsLoaded {
-  const _$_AvailableCoinsLoaded(
+class _$AvailableCoinsLoaded implements AvailableCoinsLoaded {
+  const _$AvailableCoinsLoaded(
       {required final List<AvailableCoin> availableCoins,
       required final List<AvailableCoin> availableCoinsInUserWallet})
       : _availableCoins = availableCoins,
@@ -440,7 +440,7 @@ class _$_AvailableCoinsLoaded implements _AvailableCoinsLoaded {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AvailableCoinsLoaded &&
+            other is _$AvailableCoinsLoaded &&
             const DeepCollectionEquality()
                 .equals(other._availableCoins, _availableCoins) &&
             const DeepCollectionEquality().equals(
@@ -456,8 +456,8 @@ class _$_AvailableCoinsLoaded implements _AvailableCoinsLoaded {
 
   @JsonKey(ignore: true)
   @override
-  _$$_AvailableCoinsLoadedCopyWith<_$_AvailableCoinsLoaded> get copyWith =>
-      __$$_AvailableCoinsLoadedCopyWithImpl<_$_AvailableCoinsLoaded>(
+  _$$AvailableCoinsLoadedCopyWith<_$AvailableCoinsLoaded> get copyWith =>
+      __$$AvailableCoinsLoadedCopyWithImpl<_$AvailableCoinsLoaded>(
           this, _$identity);
 
   @override
@@ -508,7 +508,7 @@ class _$_AvailableCoinsLoaded implements _AvailableCoinsLoaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_AvailableCoinsLoaded value) availableCoinsLoaded,
+    required TResult Function(AvailableCoinsLoaded value) availableCoinsLoaded,
     required TResult Function(_AvailableCoinsLoading value)
         availableCoinsLoading,
     required TResult Function(_AvailableCoinsFailure value)
@@ -521,7 +521,7 @@ class _$_AvailableCoinsLoaded implements _AvailableCoinsLoaded {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_AvailableCoinsLoaded value)? availableCoinsLoaded,
+    TResult Function(AvailableCoinsLoaded value)? availableCoinsLoaded,
     TResult Function(_AvailableCoinsLoading value)? availableCoinsLoading,
     TResult Function(_AvailableCoinsFailure value)? availableCoinsFailure,
   }) {
@@ -532,7 +532,7 @@ class _$_AvailableCoinsLoaded implements _AvailableCoinsLoaded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_AvailableCoinsLoaded value)? availableCoinsLoaded,
+    TResult Function(AvailableCoinsLoaded value)? availableCoinsLoaded,
     TResult Function(_AvailableCoinsLoading value)? availableCoinsLoading,
     TResult Function(_AvailableCoinsFailure value)? availableCoinsFailure,
     required TResult orElse(),
@@ -544,17 +544,17 @@ class _$_AvailableCoinsLoaded implements _AvailableCoinsLoaded {
   }
 }
 
-abstract class _AvailableCoinsLoaded implements AvailableCoinsState {
-  const factory _AvailableCoinsLoaded(
+abstract class AvailableCoinsLoaded implements AvailableCoinsState {
+  const factory AvailableCoinsLoaded(
           {required final List<AvailableCoin> availableCoins,
           required final List<AvailableCoin> availableCoinsInUserWallet}) =
-      _$_AvailableCoinsLoaded;
+      _$AvailableCoinsLoaded;
 
   List<AvailableCoin> get availableCoins => throw _privateConstructorUsedError;
   List<AvailableCoin> get availableCoinsInUserWallet =>
       throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$$_AvailableCoinsLoadedCopyWith<_$_AvailableCoinsLoaded> get copyWith =>
+  _$$AvailableCoinsLoadedCopyWith<_$AvailableCoinsLoaded> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -644,7 +644,7 @@ class _$_AvailableCoinsLoading implements _AvailableCoinsLoading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_AvailableCoinsLoaded value) availableCoinsLoaded,
+    required TResult Function(AvailableCoinsLoaded value) availableCoinsLoaded,
     required TResult Function(_AvailableCoinsLoading value)
         availableCoinsLoading,
     required TResult Function(_AvailableCoinsFailure value)
@@ -657,7 +657,7 @@ class _$_AvailableCoinsLoading implements _AvailableCoinsLoading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_AvailableCoinsLoaded value)? availableCoinsLoaded,
+    TResult Function(AvailableCoinsLoaded value)? availableCoinsLoaded,
     TResult Function(_AvailableCoinsLoading value)? availableCoinsLoading,
     TResult Function(_AvailableCoinsFailure value)? availableCoinsFailure,
   }) {
@@ -668,7 +668,7 @@ class _$_AvailableCoinsLoading implements _AvailableCoinsLoading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_AvailableCoinsLoaded value)? availableCoinsLoaded,
+    TResult Function(AvailableCoinsLoaded value)? availableCoinsLoaded,
     TResult Function(_AvailableCoinsLoading value)? availableCoinsLoading,
     TResult Function(_AvailableCoinsFailure value)? availableCoinsFailure,
     required TResult orElse(),
@@ -804,7 +804,7 @@ class _$_AvailableCoinsFailure implements _AvailableCoinsFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_AvailableCoinsLoaded value) availableCoinsLoaded,
+    required TResult Function(AvailableCoinsLoaded value) availableCoinsLoaded,
     required TResult Function(_AvailableCoinsLoading value)
         availableCoinsLoading,
     required TResult Function(_AvailableCoinsFailure value)
@@ -817,7 +817,7 @@ class _$_AvailableCoinsFailure implements _AvailableCoinsFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_AvailableCoinsLoaded value)? availableCoinsLoaded,
+    TResult Function(AvailableCoinsLoaded value)? availableCoinsLoaded,
     TResult Function(_AvailableCoinsLoading value)? availableCoinsLoading,
     TResult Function(_AvailableCoinsFailure value)? availableCoinsFailure,
   }) {
@@ -828,7 +828,7 @@ class _$_AvailableCoinsFailure implements _AvailableCoinsFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_AvailableCoinsLoaded value)? availableCoinsLoaded,
+    TResult Function(AvailableCoinsLoaded value)? availableCoinsLoaded,
     TResult Function(_AvailableCoinsLoading value)? availableCoinsLoading,
     TResult Function(_AvailableCoinsFailure value)? availableCoinsFailure,
     required TResult orElse(),

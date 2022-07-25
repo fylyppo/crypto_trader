@@ -1,35 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../application/wallet/available_coins_bloc/available_coins_bloc.dart';
+import '../../../application/wallet/bloc/search_available_coins_bloc.dart';
 
 class SpotTradeForm extends StatelessWidget {
-  const SpotTradeForm({Key? key}) : super(key: key);
+  final AvailableCoinsBloc availableCoinsBloc;
+  const SpotTradeForm({Key? key, required this.availableCoinsBloc}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: TextField(decoration: InputDecoration(hintText: 'Search fo coin'),),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextField(
+            decoration: const InputDecoration(hintText: 'Search for a coin'),
+            onChanged: (val) {
+              context.read<SearchAvailableCoinsBloc>().add(SearchAvailableCoinsEvent.coinChanged(coin: val, bloc: availableCoinsBloc));
+            },
+          ),
         ),
         Container(
           height: 70,
           color: Colors.grey,
-          child: BlocBuilder<AvailableCoinsBloc, AvailableCoinsState>(
+          child: BlocBuilder<SearchAvailableCoinsBloc, SearchAvailableCoinsState>(
             builder: (context, state) {
-              return state.map(
-                  initial: (_) => const Text('init'),
-                  availableCoinsLoading: (_) =>
-                      const CircularProgressIndicator(),
-                  availableCoinsFailure: (_) => const Text('failure'),
-                  availableCoinsLoaded: (value) => ListView.builder(
+              return ListView.builder(
                       shrinkWrap: true,
                       padding: const EdgeInsets.all(4),
-                      itemCount: value.availableCoins.length,
+                      itemCount: state.searchedCoins.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        final coin = value.availableCoins[index];
+                        final coin = state.searchedCoins[index];
                         return Container(
                             margin: const EdgeInsets.all(8),
                             padding: const EdgeInsets.all(8),
@@ -37,8 +39,12 @@ class SpotTradeForm extends StatelessWidget {
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(12)),
-                            child: Center(child: Text(coin.coin, style: TextStyle(fontWeight: FontWeight.bold),)));
-                      }));
+                            child: Center(
+                                child: Text(
+                              coin.coin,
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                            )));
+                      });
             },
           ),
         ),
@@ -47,11 +53,11 @@ class SpotTradeForm extends StatelessWidget {
           children: [
             TextFormField(
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(hintText: 'Quantity'),
+              decoration: const InputDecoration(hintText: 'Quantity'),
             ),
             TextFormField(
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(hintText: 'Price'),
+              decoration: const InputDecoration(hintText: 'Price'),
             ),
           ],
         )),

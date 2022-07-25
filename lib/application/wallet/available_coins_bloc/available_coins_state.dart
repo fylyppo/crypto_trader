@@ -6,7 +6,7 @@ class AvailableCoinsState with _$AvailableCoinsState {
   const factory AvailableCoinsState.availableCoinsLoaded(
           {required List<AvailableCoin> availableCoins,
           required List<AvailableCoin> availableCoinsInUserWallet}) =
-      _AvailableCoinsLoaded;
+      AvailableCoinsLoaded;
   const factory AvailableCoinsState.availableCoinsLoading() =
       _AvailableCoinsLoading;
   const factory AvailableCoinsState.availableCoinsFailure(
